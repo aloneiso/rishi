@@ -5,37 +5,494 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>support — rishi</title>
-  <meta name="description" content="support rishi.">
+  <meta
+    name="description"
+    content="support rishi."
+  >
 
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/favicon.png"
+  >
+
+  <!-- Main website CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+
+    /* =================================
+       SUPPORT PAGE
+       ================================= */
+
+    .support-page {
+      overflow: hidden;
+    }
+
+    .support-content {
+      max-width: 760px;
+    }
+
+
+    /* =================================
+       PAYMENT BOX
+       ================================= */
+
+    .support-payment {
+      position: relative;
+
+      margin-top: 75px;
+
+      padding: 32px;
+
+      border: 1px solid var(--line);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.025),
+          rgba(255,255,255,0)
+        );
+
+      overflow: hidden;
+    }
+
+
+    /* subtle corner detail */
+
+    .support-payment::before {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      top: -70px;
+      right: -70px;
+
+      border: 1px solid #252525;
+
+      transform: rotate(45deg);
+
+      pointer-events: none;
+    }
+
+
+    /* =================================
+       PAYMENT HEADER
+       ================================= */
+
+    .support-label {
+      position: relative;
+
+      display: flex;
+
+      align-items: baseline;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding-bottom: 22px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .support-label span {
+      color: var(--text);
+
+      font-size: 0.72rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.14em;
+    }
+
+
+    .support-label small {
+      color: var(--dim);
+
+      font-size: 0.6rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+    }
+
+
+    /* =================================
+       AMOUNT BUTTONS
+       ================================= */
+
+    .amount-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 6px;
+
+      margin-top: 22px;
+    }
+
+
+    .amount-button {
+      position: relative;
+
+      height: 58px;
+
+      border: 1px solid var(--line);
+
+      background: transparent;
+
+      color: #777;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 0.8rem;
+
+      transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+
+    .amount-button:hover {
+      color: var(--text);
+
+      border-color: #444;
+
+      background: #111;
+    }
+
+
+    .amount-button.selected {
+      color: #080808;
+
+      background: #f2f2f2;
+
+      border-color: #f2f2f2;
+    }
+
+
+    /* =================================
+       CUSTOM AMOUNT
+       ================================= */
+
+    .custom-amount {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      height: 58px;
+
+      margin-top: 6px;
+
+      border: 1px solid var(--line);
+
+      background: #0b0b0b;
+
+      transition:
+        border-color 0.2s ease;
+    }
+
+
+    .custom-amount:focus-within {
+      border-color: #555;
+    }
+
+
+    .custom-amount > span {
+      padding-left: 17px;
+
+      color: #777;
+
+      font-size: 0.8rem;
+    }
+
+
+    .custom-amount input {
+      width: 100%;
+
+      height: 100%;
+
+      padding: 0 16px 0 8px;
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      color: var(--text);
+
+      font-family: inherit;
+
+      font-size: 0.8rem;
+    }
+
+
+    .custom-amount input::placeholder {
+      color: #444;
+    }
+
+
+    .custom-amount input::-webkit-inner-spin-button,
+    .custom-amount input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+
+      margin: 0;
+    }
+
+
+    .custom-amount input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+
+    /* =================================
+       MAIN SUPPORT BUTTON
+       ================================= */
+
+    .support-button {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      width: 100%;
+
+      height: 68px;
+
+      margin-top: 18px;
+
+      padding: 0 20px;
+
+      border: 1px solid #eaeaea;
+
+      background: #eaeaea;
+
+      color: #080808;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 0.78rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+
+    .support-button b {
+      font-size: 1.1rem;
+
+      font-weight: 400;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+
+    .support-button:hover {
+      background: transparent;
+
+      color: #f2f2f2;
+
+      border-color: #444;
+    }
+
+
+    .support-button:hover b {
+      transform: translate(3px, -3px);
+    }
+
+
+    /* =================================
+       PAYMENT NOTE
+       ================================= */
+
+    .payment-note {
+      margin-top: 13px;
+
+      color: #3f3f3f;
+
+      font-size: 0.58rem;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+    }
+
+
+    /* =================================
+       INSTAGRAM
+       ================================= */
+
+    .find-me {
+      margin-top: 100px;
+    }
+
+
+    /* =================================
+       MOBILE
+       ================================= */
+
+    @media (max-width: 600px) {
+
+      .support-content {
+        width: 100%;
+      }
+
+
+      .support-payment {
+        margin-top: 55px;
+
+        padding: 20px;
+      }
+
+
+      .support-label {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 6px;
+      }
+
+
+      .amount-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 6px;
+
+        margin-top: 18px;
+      }
+
+
+      .amount-button {
+        height: 56px;
+      }
+
+
+      .custom-amount {
+        height: 56px;
+      }
+
+
+      .support-button {
+        height: 62px;
+
+        margin-top: 15px;
+      }
+
+
+      .payment-note {
+        font-size: 0.52rem;
+      }
+
+
+      .find-me {
+        margin-top: 75px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- =================================
+       HEADER
+       ================================= -->
+
   <header class="site-header">
 
-    <a href="index.html" class="logo">rishi</a>
+    <a
+      href="index.html"
+      class="logo"
+    >
+      rishi
+    </a>
+
 
     <nav class="nav">
-      <a href="about.html">about</a>
-      <a href="things.html">things</a>
-      <a href="photos.html">photos</a>
-      <a href="now.html">now</a>
-      <a href="support.html" class="active">support</a>
+
+      <a href="about.html">
+        about
+      </a>
+
+      <a href="things.html">
+        things
+      </a>
+
+      <a href="photos.html">
+        photos
+      </a>
+
+      <a href="now.html">
+        now
+      </a>
+
+      <a
+        href="support.html"
+        class="active"
+      >
+        support
+      </a>
+
     </nav>
 
   </header>
 
 
-  <main class="page">
+
+  <!-- =================================
+       MAIN
+       ================================= -->
+
+  <main class="page support-page">
+
+
+    <!-- PAGE HEADING -->
 
     <section class="page-heading">
 
       <div class="heading-meta">
-        <span class="eyebrow">05 / support</span>
-        <span class="heading-number">05</span>
+
+        <span class="eyebrow">
+          05 / support
+        </span>
+
+        <span class="heading-number">
+          05
+        </span>
+
       </div>
+
 
       <h1>
         if you<br>
@@ -45,7 +502,11 @@
     </section>
 
 
+
+    <!-- SUPPORT CONTENT -->
+
     <section class="support-content">
+
 
       <p class="big-copy">
         if you like what i make and want to help me
@@ -55,31 +516,141 @@
 
       <p class="support-description">
         no subscriptions. no memberships.
-        no dramatic speech about how your ₹50
-        is going to change my life.
+        just a little support if you feel like it.
       </p>
 
 
-      <div class="support-box">
 
-        <div>
-          <span>support</span>
-          <strong>coming soon.</strong>
+      <!-- =================================
+           PAYMENT
+           ================================= -->
+
+      <section class="support-payment">
+
+
+        <div class="support-label">
+
+          <span>
+            support
+          </span>
+
+          <small>
+            choose an amount
+          </small>
+
         </div>
 
-        <b>↗</b>
 
-      </div>
 
+        <!-- AMOUNTS -->
+
+        <div class="amount-grid">
+
+          <button
+            class="amount-button"
+            data-amount="10"
+            type="button"
+          >
+            ₹10
+          </button>
+
+
+          <button
+            class="amount-button selected"
+            data-amount="20"
+            type="button"
+          >
+            ₹20
+          </button>
+
+
+          <button
+            class="amount-button"
+            data-amount="50"
+            type="button"
+          >
+            ₹50
+          </button>
+
+
+          <button
+            class="amount-button"
+            data-amount="100"
+            type="button"
+          >
+            ₹100
+          </button>
+
+        </div>
+
+
+
+        <!-- CUSTOM -->
+
+        <div class="custom-amount">
+
+          <span>
+            ₹
+          </span>
+
+          <input
+            type="number"
+            id="customAmount"
+            min="10"
+            step="1"
+            inputmode="numeric"
+            placeholder="custom amount"
+          >
+
+        </div>
+
+
+
+        <!-- SUPPORT -->
+
+        <button
+          class="support-button"
+          id="supportButton"
+          type="button"
+        >
+
+          <span>
+            support ₹<span id="selectedAmount">20</span>
+          </span>
+
+          <b>
+            ↗
+          </b>
+
+        </button>
+
+
+        <p class="payment-note">
+          minimum ₹10 · opens your UPI app
+        </p>
+
+
+      </section>
+
+
+
+      <!-- =================================
+           FIND ME
+           ================================= -->
 
       <section class="find-me">
 
-        <span class="eyebrow">find me</span>
+
+        <span class="eyebrow">
+          find me
+        </span>
+
 
         <p>
           if you actually want to find me,
           i'm probably here.
         </p>
+
 
 
         <a
@@ -93,22 +664,289 @@
             instagram
           </span>
 
+
           <span class="instagram-handle">
             @throughrishi
           </span>
 
-          <b>↗</b>
+
+          <b>
+            ↗
+          </b>
 
         </a>
 
+
       </section>
 
+
     </section>
+
 
   </main>
 
 
-  <script src="js/main.js"></script>
+
+  <!-- =================================
+       JAVASCRIPT
+       ================================= -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+
+        /*
+         * Your UPI ID
+         */
+
+        const upiId =
+          "rishi09kumarr@oksbi";
+
+
+        /*
+         * Name shown in the UPI app
+         */
+
+        const name =
+          "Rishi";
+
+
+        /*
+         * Elements
+         */
+
+        const amountButtons =
+          document.querySelectorAll(
+            ".amount-button"
+          );
+
+
+        const customInput =
+          document.getElementById(
+            "customAmount"
+          );
+
+
+        const supportButton =
+          document.getElementById(
+            "supportButton"
+          );
+
+
+        const selectedAmount =
+          document.getElementById(
+            "selectedAmount"
+          );
+
+
+        /*
+         * Default amount
+         */
+
+        let amount = 20;
+
+
+
+        /*
+         * Update displayed amount
+         */
+
+        function updateAmount(value) {
+
+          amount =
+            Number(value);
+
+          selectedAmount.textContent =
+            amount;
+
+        }
+
+
+
+        /*
+         * Select preset amount
+         */
+
+        function selectButton(button) {
+
+
+          amountButtons.forEach(
+            (item) => {
+
+              item.classList.remove(
+                "selected"
+              );
+
+            }
+          );
+
+
+          button.classList.add(
+            "selected"
+          );
+
+
+          /*
+           * Clear custom amount
+           */
+
+          customInput.value = "";
+
+
+          updateAmount(
+            button.dataset.amount
+          );
+
+        }
+
+
+
+        /*
+         * Preset buttons
+         */
+
+        amountButtons.forEach(
+          (button) => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                selectButton(button);
+
+              }
+            );
+
+          }
+        );
+
+
+
+        /*
+         * Custom amount
+         */
+
+        customInput.addEventListener(
+          "input",
+          () => {
+
+
+            const value =
+              Number(
+                customInput.value
+              );
+
+
+            /*
+             * Remove selected preset
+             */
+
+            amountButtons.forEach(
+              (button) => {
+
+                button.classList.remove(
+                  "selected"
+                );
+
+              }
+            );
+
+
+            if (value >= 10) {
+
+              updateAmount(value);
+
+            }
+
+          }
+        );
+
+
+
+        /*
+         * Open UPI payment
+         */
+
+        supportButton.addEventListener(
+          "click",
+          () => {
+
+
+            let finalAmount =
+              Number(
+                customInput.value
+              );
+
+
+            /*
+             * Use selected preset
+             * if custom amount
+             * isn't being used
+             */
+
+            if (
+              !finalAmount ||
+              finalAmount < 10
+            ) {
+
+              finalAmount =
+                amount;
+
+            }
+
+
+            /*
+             * Minimum amount
+             */
+
+            if (
+              !finalAmount ||
+              finalAmount < 10
+            ) {
+
+              alert(
+                "minimum support amount is ₹10"
+              );
+
+              return;
+
+            }
+
+
+            /*
+             * Create UPI URL
+             */
+
+            const upiUrl =
+              "upi://pay" +
+              "?pa=" +
+              encodeURIComponent(upiId) +
+              "&pn=" +
+              encodeURIComponent(name) +
+              "&am=" +
+              encodeURIComponent(finalAmount) +
+              "&cu=INR";
+
+
+            /*
+             * Open UPI app
+             */
+
+            window.location.href =
+              upiUrl;
+
+          }
+        );
+
+
+      }
+    );
+
+  </script>
+
 
 </body>
 </html>
