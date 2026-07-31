@@ -1,22 +1,37 @@
+/* =================================
+   ROOT
+   ================================= */
+
 :root {
+
   --bg: #090909;
+
   --surface: #101010;
+
   --surface-hover: #151515;
 
   --text: #f2f2f2;
+
   --muted: #858585;
+
   --dim: #505050;
 
   --line: #242424;
+
   --line-light: #303030;
+
 }
 
 
-/* RESET */
+/* =================================
+   RESET
+   ================================= */
 
 * {
   box-sizing: border-box;
+
   margin: 0;
+
   padding: 0;
 }
 
@@ -30,6 +45,7 @@ body {
   min-height: 100vh;
 
   background: var(--bg);
+
   color: var(--text);
 
   font-family:
@@ -50,6 +66,7 @@ body.lightbox-open {
 
 a {
   color: inherit;
+
   text-decoration: none;
 }
 
@@ -61,6 +78,7 @@ button {
 
 img {
   display: block;
+
   max-width: 100%;
 }
 
@@ -71,17 +89,25 @@ a {
 }
 
 
-/* HEADER */
+/* =================================
+   HEADER
+   ================================= */
 
 .site-header {
-  width: min(1100px, calc(100% - 40px));
+
+  width: min(
+    1100px,
+    calc(100% - 40px)
+  );
 
   min-height: 78px;
 
   margin: auto;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 25px;
@@ -91,9 +117,11 @@ a {
 
 
 .logo {
+
   flex-shrink: 0;
 
   font-size: 1.1rem;
+
   font-weight: 600;
 
   letter-spacing: -0.06em;
@@ -101,8 +129,11 @@ a {
 
 
 .nav {
+
   display: flex;
+
   align-items: center;
+
   justify-content: flex-end;
 
   gap: 22px;
@@ -112,24 +143,33 @@ a {
 
 
 .nav a {
+
   color: var(--muted);
 
   font-size: 0.78rem;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 
 .nav a:hover,
 .nav a.active {
+
   color: var(--text);
 }
 
 
-/* GENERAL */
+/* =================================
+   GENERAL
+   ================================= */
 
 .page {
-  width: min(1100px, calc(100% - 40px));
+
+  width: min(
+    1100px,
+    calc(100% - 40px)
+  );
 
   margin: auto;
 
@@ -138,6 +178,7 @@ a {
 
 
 .eyebrow {
+
   color: var(--muted);
 
   font-size: 0.68rem;
@@ -150,14 +191,17 @@ a {
 
 .heading-meta,
 .hero-meta {
+
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 }
 
 
 .heading-number {
+
   color: var(--dim);
 
   font-size: 0.68rem;
@@ -165,6 +209,7 @@ a {
 
 
 .muted-small {
+
   color: var(--dim);
 
   font-size: 0.65rem;
@@ -176,9 +221,15 @@ a {
 
 
 .page-heading h1 {
+
   margin-top: 35px;
 
-  font-size: clamp(4rem, 11vw, 9rem);
+  font-size:
+    clamp(
+      4rem,
+      11vw,
+      9rem
+    );
 
   line-height: 0.82;
 
@@ -188,26 +239,36 @@ a {
 }
 
 
-/* HOME */
+/* =================================
+   HOME
+   ================================= */
 
 .home {
-  width: min(1100px, calc(100% - 40px));
 
-  min-height: calc(100vh - 78px);
+  width: min(
+    1100px,
+    calc(100% - 40px)
+  );
+
+  min-height:
+    calc(100vh - 78px);
 
   margin: auto;
 
   padding: 80px 0 25px;
 
   display: flex;
+
   flex-direction: column;
 }
 
 
 .hero {
+
   flex: 1;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: center;
@@ -215,9 +276,15 @@ a {
 
 
 .hero h1 {
+
   margin-top: 25px;
 
-  font-size: clamp(5.5rem, 18vw, 14rem);
+  font-size:
+    clamp(
+      5.5rem,
+      18vw,
+      14rem
+    );
 
   line-height: 0.76;
 
@@ -228,11 +295,13 @@ a {
 
 
 .hero-content {
+
   margin-top: 60px;
 }
 
 
 .hero-intro {
+
   max-width: 570px;
 
   color: var(--muted);
@@ -244,6 +313,7 @@ a {
 
 
 .hero-links {
+
   display: flex;
 
   flex-wrap: wrap;
@@ -255,9 +325,11 @@ a {
 
 
 .hero-links a {
+
   padding-bottom: 6px;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 
   font-size: 0.85rem;
 
@@ -268,6 +340,7 @@ a {
 
 
 .hero-links a:hover {
+
   color: #fff;
 
   border-color: #fff;
@@ -275,27 +348,36 @@ a {
 
 
 .hero-links span {
+
   margin-left: 8px;
 
   color: var(--muted);
 }
 
 
-/* HOME GRID */
+/* =================================
+   HOME GRID
+   ================================= */
 
 .home-grid {
+
   margin-top: 80px;
 
   display: grid;
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns:
+    repeat(2, 1fr);
 
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
+
+  border-left:
+    1px solid var(--line);
 }
 
 
 .home-card {
+
   min-height: 190px;
 
   padding: 25px;
@@ -303,12 +385,16 @@ a {
   position: relative;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: space-between;
 
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
 
   transition:
     background 0.25s ease;
@@ -316,11 +402,13 @@ a {
 
 
 .home-card:hover {
+
   background: var(--surface);
 }
 
 
 .card-number {
+
   color: var(--dim);
 
   font-size: 0.65rem;
@@ -328,6 +416,7 @@ a {
 
 
 .home-card h2 {
+
   font-size: 1.7rem;
 
   letter-spacing: -0.06em;
@@ -335,6 +424,7 @@ a {
 
 
 .home-card p {
+
   margin-top: 2px;
 
   color: var(--muted);
@@ -344,9 +434,11 @@ a {
 
 
 .card-arrow {
+
   position: absolute;
 
   right: 25px;
+
   top: 25px;
 
   color: var(--muted);
@@ -355,7 +447,138 @@ a {
 }
 
 
+/* =================================
+   HOME SUPPORT
+   ================================= */
+
+.home-support {
+
+  margin-top: 120px;
+
+  padding-top: 30px;
+
+  border-top:
+    1px solid var(--line);
+}
+
+
+.home-support-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.home-support-content {
+
+  max-width: 760px;
+
+  padding-top: 55px;
+}
+
+
+.home-support-content h2 {
+
+  font-size:
+    clamp(
+      3.8rem,
+      10vw,
+      8rem
+    );
+
+  line-height: 0.82;
+
+  letter-spacing: -0.09em;
+
+  font-weight: 700;
+}
+
+
+.home-support-content p {
+
+  max-width: 520px;
+
+  margin-top: 45px;
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+
+  line-height: 1.8;
+}
+
+
+.home-support-link {
+
+  width: min(
+    100%,
+    520px
+  );
+
+  margin-top: 40px;
+
+  padding: 19px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-top:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
+  font-size: 0.75rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    padding 0.25s ease;
+}
+
+
+.home-support-link b {
+
+  color: var(--muted);
+
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.home-support-link:hover {
+
+  padding-left: 10px;
+
+  padding-right: 10px;
+}
+
+
+.home-support-link:hover b {
+
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* =================================
+   FOOTER
+   ================================= */
+
 .site-footer {
+
   padding-top: 25px;
 
   display: flex;
@@ -372,9 +595,12 @@ a {
 }
 
 
-/* ABOUT */
+/* =================================
+   ABOUT
+   ================================= */
 
 .about-grid {
+
   margin-top: 100px;
 
   display: grid;
@@ -383,13 +609,19 @@ a {
     minmax(260px, 0.75fr)
     minmax(300px, 1.25fr);
 
-  gap: clamp(50px, 10vw, 120px);
+  gap:
+    clamp(
+      50px,
+      10vw,
+      120px
+    );
 
   align-items: start;
 }
 
 
 .profile-wrap {
+
   position: sticky;
 
   top: 30px;
@@ -397,6 +629,7 @@ a {
 
 
 .profile-image {
+
   width: 100%;
 
   aspect-ratio: 1 / 1;
@@ -405,16 +638,19 @@ a {
 
   filter: grayscale(100%);
 
-  transition: filter 0.4s ease;
+  transition:
+    filter 0.4s ease;
 }
 
 
 .profile-image:hover {
+
   filter: grayscale(0%);
 }
 
 
 .image-caption {
+
   margin-top: 12px;
 
   color: var(--dim);
@@ -424,14 +660,21 @@ a {
 
 
 .about-content {
+
   max-width: 600px;
 }
 
 
 .big-copy {
+
   color: var(--text);
 
-  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-size:
+    clamp(
+      1.25rem,
+      3vw,
+      1.6rem
+    );
 
   line-height: 1.5;
 
@@ -440,11 +683,13 @@ a {
 
 
 .text-block {
+
   margin-top: 45px;
 }
 
 
 .text-block p {
+
   margin-bottom: 28px;
 
   color: var(--muted);
@@ -455,16 +700,21 @@ a {
 }
 
 
-/* INTERESTS */
+/* =================================
+   INTERESTS
+   ================================= */
 
 .interest-list {
+
   margin-top: 70px;
 
-  border-top: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
 }
 
 
 .interest-list div {
+
   display: flex;
 
   align-items: center;
@@ -473,11 +723,13 @@ a {
 
   padding: 18px 0;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 }
 
 
 .interest-list span {
+
   color: var(--dim);
 
   font-size: 0.65rem;
@@ -485,18 +737,26 @@ a {
 
 
 .interest-list p {
+
   color: #aaa;
 
   font-size: 0.85rem;
 }
 
 
-/* THINGS */
+/* =================================
+   THINGS
+   ================================= */
 
 .things-page {
-  width: min(1100px, calc(100% - 40px));
 
-  min-height: calc(100vh - 78px);
+  width: min(
+    1100px,
+    calc(100% - 40px)
+  );
+
+  min-height:
+    calc(100vh - 78px);
 
   margin: auto;
 
@@ -507,14 +767,21 @@ a {
 
 
 .nothing {
+
   width: 100%;
 }
 
 
 .nothing h1 {
+
   margin-top: 30px;
 
-  font-size: clamp(5rem, 18vw, 14rem);
+  font-size:
+    clamp(
+      5rem,
+      18vw,
+      14rem
+    );
 
   line-height: 0.72;
 
@@ -525,9 +792,15 @@ a {
 
 
 .nothing-note {
+
   margin-top: 45px;
 
-  margin-left: clamp(20px, 18vw, 220px);
+  margin-left:
+    clamp(
+      20px,
+      18vw,
+      220px
+    );
 
   display: flex;
 
@@ -538,6 +811,7 @@ a {
 
 
 .nothing-note span {
+
   width: 45px;
 
   height: 1px;
@@ -547,15 +821,19 @@ a {
 
 
 .nothing-note p {
+
   color: var(--muted);
 
   font-size: 0.78rem;
 }
 
 
-/* PHOTOS */
+/* =================================
+   PHOTOS
+   ================================= */
 
 .photo-intro {
+
   max-width: 600px;
 
   margin-top: 75px;
@@ -563,6 +841,7 @@ a {
 
 
 .photo-intro p {
+
   color: var(--muted);
 
   font-size: 1.05rem;
@@ -571,20 +850,21 @@ a {
 }
 
 
-/* PHOTO GRID */
-
 .photo-grid {
+
   margin-top: 75px;
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, 1fr);
 
   gap: 12px;
 }
 
 
 .photo-card {
+
   width: 100%;
 
   aspect-ratio: 1 / 1;
@@ -604,7 +884,9 @@ a {
 
 
 .photo-card img {
+
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
@@ -616,6 +898,7 @@ a {
 
 
 .photo-card:hover img {
+
   transform: scale(1.035);
 
   opacity: 0.78;
@@ -623,29 +906,42 @@ a {
 
 
 .photo-card > span {
+
   position: absolute;
 
   left: 12px;
+
   bottom: 10px;
 
-  color: rgba(255, 255, 255, 0.7);
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.7
+    );
 
   font-size: 0.62rem;
 
   opacity: 0;
 
-  transition: opacity 0.25s ease;
+  transition:
+    opacity 0.25s ease;
 }
 
 
 .photo-card:hover > span {
+
   opacity: 1;
 }
 
 
-/* LIGHTBOX */
+/* =================================
+   LIGHTBOX
+   ================================= */
 
 .lightbox {
+
   position: fixed;
 
   inset: 0;
@@ -657,9 +953,16 @@ a {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
-  background: rgba(0, 0, 0, 0.96);
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.96
+    );
 
   opacity: 0;
 
@@ -672,6 +975,7 @@ a {
 
 
 .lightbox.open {
+
   opacity: 1;
 
   visibility: visible;
@@ -679,13 +983,25 @@ a {
 
 
 .lightbox-content {
-  width: min(90vw, 1000px);
-  height: min(88vh, 900px);
+
+  width:
+    min(
+      90vw,
+      1000px
+    );
+
+  height:
+    min(
+      88vh,
+      900px
+    );
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
   gap: 15px;
@@ -693,10 +1009,16 @@ a {
 
 
 .lightbox-content img {
+
   max-width: 100%;
-  max-height: calc(100% - 30px);
+
+  max-height:
+    calc(
+      100% - 30px
+    );
 
   width: auto;
+
   height: auto;
 
   object-fit: contain;
@@ -704,6 +1026,7 @@ a {
 
 
 .lightbox-info {
+
   width: 100%;
 
   display: flex;
@@ -723,6 +1046,7 @@ a {
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
+
   position: absolute;
 
   z-index: 2;
@@ -735,19 +1059,23 @@ a {
 
   cursor: pointer;
 
-  transition: opacity 0.2s ease;
+  transition:
+    opacity 0.2s ease;
 }
 
 
 .lightbox-close:hover,
 .lightbox-prev:hover,
 .lightbox-next:hover {
+
   opacity: 0.55;
 }
 
 
 .lightbox-close {
+
   top: 22px;
+
   right: 28px;
 
   font-size: 2rem;
@@ -758,9 +1086,11 @@ a {
 
 .lightbox-prev,
 .lightbox-next {
+
   top: 50%;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 
   padding: 25px;
 
@@ -769,38 +1099,48 @@ a {
 
 
 .lightbox-prev {
+
   left: 20px;
 }
 
 
 .lightbox-next {
+
   right: 20px;
 }
 
 
-/* NOW */
+/* =================================
+   NOW
+   ================================= */
 
 .now-list {
+
   margin-top: 100px;
 
-  border-top: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
 }
 
 
 .now-item {
+
   display: grid;
 
-  grid-template-columns: 180px 1fr;
+  grid-template-columns:
+    180px 1fr;
 
   gap: 50px;
 
   padding: 35px 0;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 }
 
 
 .now-meta {
+
   display: flex;
 
   justify-content: space-between;
@@ -810,6 +1150,7 @@ a {
 
 
 .now-meta span {
+
   color: var(--muted);
 
   font-size: 0.68rem;
@@ -821,6 +1162,7 @@ a {
 
 
 .now-meta small {
+
   color: var(--dim);
 
   font-size: 0.6rem;
@@ -828,6 +1170,7 @@ a {
 
 
 .now-item > p {
+
   max-width: 600px;
 
   color: #aaa;
@@ -839,6 +1182,7 @@ a {
 
 
 .updated {
+
   margin-top: 35px;
 
   color: var(--dim);
@@ -851,9 +1195,12 @@ a {
 }
 
 
-/* SUPPORT */
+/* =================================
+   SUPPORT
+   ================================= */
 
 .support-content {
+
   max-width: 700px;
 
   margin-top: 100px;
@@ -861,6 +1208,7 @@ a {
 
 
 .support-description {
+
   max-width: 550px;
 
   margin-top: 30px;
@@ -874,6 +1222,7 @@ a {
 
 
 .support-box {
+
   margin-top: 70px;
 
   padding: 28px 0;
@@ -884,12 +1233,16 @@ a {
 
   justify-content: space-between;
 
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
 }
 
 
 .support-box span {
+
   display: block;
 
   margin-bottom: 7px;
@@ -905,6 +1258,7 @@ a {
 
 
 .support-box strong {
+
   font-size: 1.7rem;
 
   letter-spacing: -0.06em;
@@ -912,6 +1266,7 @@ a {
 
 
 .support-box b {
+
   color: var(--muted);
 
   font-size: 1.5rem;
@@ -920,18 +1275,23 @@ a {
 }
 
 
-/* FIND ME */
+/* =================================
+   FIND ME
+   ================================= */
 
 .find-me {
+
   margin-top: 110px;
 
   padding-top: 30px;
 
-  border-top: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
 }
 
 
 .find-me > p {
+
   margin-top: 20px;
 
   color: var(--muted);
@@ -941,6 +1301,7 @@ a {
 
 
 .instagram-link {
+
   margin-top: 35px;
 
   padding: 18px 0;
@@ -951,16 +1312,19 @@ a {
 
   gap: 12px;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 }
 
 
 .instagram-name {
+
   font-size: 0.9rem;
 }
 
 
 .instagram-handle {
+
   color: var(--muted);
 
   font-size: 0.75rem;
@@ -968,6 +1332,7 @@ a {
 
 
 .instagram-link b {
+
   margin-left: auto;
 
   color: var(--muted);
@@ -976,11 +1341,14 @@ a {
 }
 
 
-/* TABLET */
+/* =================================
+   TABLET
+   ================================= */
 
 @media (max-width: 850px) {
 
   .about-grid {
+
     grid-template-columns: 1fr;
 
     gap: 55px;
@@ -988,6 +1356,7 @@ a {
 
 
   .profile-wrap {
+
     position: static;
 
     max-width: 500px;
@@ -995,17 +1364,23 @@ a {
 
 
   .home-grid {
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+      1fr 1fr;
   }
 
 
   .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+      repeat(2, 1fr);
   }
 
 
   .now-item {
-    grid-template-columns: 140px 1fr;
+
+    grid-template-columns:
+      140px 1fr;
 
     gap: 30px;
   }
@@ -1013,12 +1388,17 @@ a {
 }
 
 
-/* MOBILE */
+/* =================================
+   MOBILE
+   ================================= */
 
 @media (max-width: 600px) {
 
+
   .site-header {
-    width: calc(100% - 28px);
+
+    width:
+      calc(100% - 28px);
 
     min-height: 68px;
 
@@ -1031,11 +1411,13 @@ a {
 
 
   .logo {
+
     font-size: 1rem;
   }
 
 
   .nav {
+
     max-width: 255px;
 
     gap: 9px 13px;
@@ -1043,6 +1425,7 @@ a {
 
 
   .nav a {
+
     font-size: 0.66rem;
   }
 
@@ -1052,53 +1435,77 @@ a {
   .page,
   .things-page,
   .home {
-    width: calc(100% - 28px);
+
+    width:
+      calc(100% - 28px);
   }
 
 
   .page {
-    padding: 60px 0 90px;
+
+    padding:
+      60px 0 90px;
   }
 
 
   .page-heading h1 {
+
     margin-top: 24px;
 
-    font-size: clamp(4rem, 20vw, 7rem);
+    font-size:
+      clamp(
+        4rem,
+        20vw,
+        7rem
+      );
   }
 
 
   /* HOME */
 
   .home {
-    min-height: calc(100vh - 68px);
 
-    padding: 55px 0 20px;
+    min-height:
+      calc(100vh - 68px);
+
+    padding:
+      55px 0 20px;
   }
 
 
   .hero {
-    justify-content: flex-start;
+
+    justify-content:
+      flex-start;
 
     padding-top: 35px;
   }
 
 
   .hero h1 {
+
     margin-top: 20px;
 
-    font-size: clamp(5.2rem, 26vw, 9rem);
+    font-size:
+      clamp(
+        5.2rem,
+        26vw,
+        9rem
+      );
 
-    letter-spacing: -0.12em;
+    letter-spacing:
+      -0.12em;
   }
 
 
   .hero-content {
+
     margin-top: 45px;
   }
 
 
   .hero-intro {
+
     font-size: 0.88rem;
 
     line-height: 1.8;
@@ -1106,6 +1513,7 @@ a {
 
 
   .hero-links {
+
     margin-top: 28px;
 
     gap: 18px;
@@ -1113,11 +1521,13 @@ a {
 
 
   .hero-links a {
+
     font-size: 0.76rem;
   }
 
 
   .home-grid {
+
     margin-top: 65px;
 
     grid-template-columns: 1fr;
@@ -1125,6 +1535,7 @@ a {
 
 
   .home-card {
+
     min-height: 125px;
 
     padding: 20px;
@@ -1132,17 +1543,68 @@ a {
 
 
   .home-card h2 {
+
     font-size: 1.45rem;
   }
 
 
   .card-arrow {
+
     right: 20px;
+
     top: 20px;
   }
 
 
+  /* HOME SUPPORT */
+
+  .home-support {
+
+    margin-top: 100px;
+
+    padding-top: 25px;
+  }
+
+
+  .home-support-content {
+
+    padding-top: 35px;
+  }
+
+
+  .home-support-content h2 {
+
+    font-size:
+      clamp(
+        3.8rem,
+        18vw,
+        7rem
+      );
+  }
+
+
+  .home-support-content p {
+
+    margin-top: 35px;
+
+    font-size: 0.84rem;
+
+    line-height: 1.8;
+  }
+
+
+  .home-support-link {
+
+    margin-top: 32px;
+
+    padding: 17px 0;
+
+    font-size: 0.68rem;
+  }
+
+
   .site-footer {
+
     padding-top: 20px;
 
     flex-direction: column;
@@ -1156,6 +1618,7 @@ a {
   /* ABOUT */
 
   .about-grid {
+
     margin-top: 65px;
 
     gap: 45px;
@@ -1163,16 +1626,19 @@ a {
 
 
   .profile-wrap {
+
     max-width: none;
   }
 
 
   .profile-image {
+
     aspect-ratio: 1 / 1;
   }
 
 
   .big-copy {
+
     font-size: 1.2rem;
 
     line-height: 1.55;
@@ -1180,11 +1646,13 @@ a {
 
 
   .text-block {
+
     margin-top: 35px;
   }
 
 
   .text-block p {
+
     font-size: 0.87rem;
 
     line-height: 1.8;
@@ -1194,6 +1662,7 @@ a {
 
 
   .interest-list {
+
     margin-top: 50px;
   }
 
@@ -1201,20 +1670,30 @@ a {
   /* THINGS */
 
   .things-page {
-    min-height: calc(100vh - 68px);
+
+    min-height:
+      calc(100vh - 68px);
 
     align-items: center;
   }
 
 
   .nothing h1 {
-    font-size: clamp(4.2rem, 22vw, 8rem);
 
-    letter-spacing: -0.12em;
+    font-size:
+      clamp(
+        4.2rem,
+        22vw,
+        8rem
+      );
+
+    letter-spacing:
+      -0.12em;
   }
 
 
   .nothing-note {
+
     margin-top: 32px;
 
     margin-left: 15px;
@@ -1222,6 +1701,7 @@ a {
 
 
   .nothing-note p {
+
     font-size: 0.7rem;
   }
 
@@ -1229,11 +1709,13 @@ a {
   /* PHOTOS */
 
   .photo-intro {
+
     margin-top: 55px;
   }
 
 
   .photo-intro p {
+
     font-size: 0.88rem;
 
     line-height: 1.8;
@@ -1246,21 +1728,29 @@ a {
   */
 
   .photo-grid {
+
     margin-top: 50px;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
 
     gap: 8px;
   }
 
 
   .photo-card {
+
     aspect-ratio: 1 / 1;
   }
 
 
   .photo-card > span {
+
     left: 8px;
+
     bottom: 7px;
 
     opacity: 1;
@@ -1272,11 +1762,13 @@ a {
   /* LIGHTBOX */
 
   .lightbox {
+
     padding: 15px;
   }
 
 
   .lightbox-content {
+
     width: 100%;
 
     height: auto;
@@ -1286,6 +1778,7 @@ a {
 
 
   .lightbox-content img {
+
     max-width: 100%;
 
     max-height: 78vh;
@@ -1293,7 +1786,9 @@ a {
 
 
   .lightbox-close {
+
     top: 12px;
+
     right: 15px;
 
     font-size: 1.8rem;
@@ -1302,7 +1797,9 @@ a {
 
   .lightbox-prev,
   .lightbox-next {
+
     top: auto;
+
     bottom: 15px;
 
     transform: none;
@@ -1314,16 +1811,19 @@ a {
 
 
   .lightbox-prev {
+
     left: 15px;
   }
 
 
   .lightbox-next {
+
     right: 15px;
   }
 
 
   .lightbox-info {
+
     padding: 0 45px;
 
     font-size: 0.55rem;
@@ -1333,11 +1833,13 @@ a {
   /* NOW */
 
   .now-list {
+
     margin-top: 65px;
   }
 
 
   .now-item {
+
     grid-template-columns: 1fr;
 
     gap: 13px;
@@ -1347,6 +1849,7 @@ a {
 
 
   .now-item > p {
+
     font-size: 0.87rem;
 
     line-height: 1.8;
@@ -1356,16 +1859,19 @@ a {
   /* SUPPORT */
 
   .support-content {
+
     margin-top: 65px;
   }
 
 
   .support-description {
+
     font-size: 0.84rem;
   }
 
 
   .support-box {
+
     margin-top: 55px;
 
     padding: 23px 0;
@@ -1373,16 +1879,19 @@ a {
 
 
   .support-box strong {
+
     font-size: 1.4rem;
   }
 
 
   .find-me {
+
     margin-top: 80px;
   }
 
 
   .instagram-link {
+
     margin-top: 30px;
   }
 
