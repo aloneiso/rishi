@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>photos — rishi</title>
+  <meta name="description" content="photographs by rishi.">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <a href="index.html" class="logo">rishi</a>
+
+    <nav class="nav">
+      <a href="about.html">about</a>
+      <a href="things.html">things</a>
+      <a href="photos.html" class="active">photos</a>
+      <a href="now.html">now</a>
+      <a href="support.html">support</a>
+    </nav>
+
+  </header>
+
+
+  <main class="page">
+
+    <section class="page-heading">
+
+      <div class="heading-meta">
+        <span class="eyebrow">03 / photos</span>
+        <span class="heading-number">03</span>
+      </div>
+
+      <h1>
+        things i've<br>
+        seen.
+      </h1>
+
+    </section>
+
+
+    <section class="photo-intro">
+
+      <p>
+        little pieces of life that caught my attention.
+        tap a photo to see it properly.
+      </p>
+
+    </section>
+
+
+    <!--
+      ADD NEW PHOTOS HERE
+
+      p1.png = first photo
+      p2.png = second photo
+      p3.png = third photo
+      etc.
+
+      Just copy one photo-card and change the number.
+    -->
+
+    <section class="photo-grid">
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p1.png"
+        data-number="01"
+        aria-label="Open photo 1"
+      >
+        <img src="images/p1.png" alt="Photo 01">
+        <span>01</span>
+      </button>
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p2.png"
+        data-number="02"
+        aria-label="Open photo 2"
+      >
+        <img src="images/p2.png" alt="Photo 02">
+        <span>02</span>
+      </button>
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p3.png"
+        data-number="03"
+        aria-label="Open photo 3"
+      >
+        <img src="images/p3.png" alt="Photo 03">
+        <span>03</span>
+      </button>
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p4.png"
+        data-number="04"
+        aria-label="Open photo 4"
+      >
+        <img src="images/p4.png" alt="Photo 04">
+        <span>04</span>
+      </button>
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p5.png"
+        data-number="05"
+        aria-label="Open photo 5"
+      >
+        <img src="images/p5.png" alt="Photo 05">
+        <span>05</span>
+      </button>
+
+
+      <button
+        class="photo-card"
+        data-photo="images/p6.png"
+        data-number="06"
+        aria-label="Open photo 6"
+      >
+        <img src="images/p6.png" alt="Photo 06">
+        <span>06</span>
+      </button>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- FULL PHOTO VIEWER -->
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="Close photo"
+    >
+      ×
+    </button>
+
+
+    <button
+      class="lightbox-prev"
+      id="lightboxPrev"
+      aria-label="Previous photo"
+    >
+      ←
+    </button>
+
+
+    <div class="lightbox-content">
+
+      <img
+        src=""
+        alt=""
+        id="lightboxImage"
+      >
+
+      <div class="lightbox-info">
+        <span id="lightboxNumber">01</span>
+        <span>tap outside to close</span>
+      </div>
+
+    </div>
+
+
+    <button
+      class="lightbox-next"
+      id="lightboxNext"
+      aria-label="Next photo"
+    >
+      →
+    </button>
+
+  </div>
+
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
