@@ -1,952 +1,1734 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>support — rishi</title>
-  <meta
-    name="description"
-    content="support rishi."
-  >
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="images/favicon.png"
-  >
-
-  <!-- Main website CSS -->
-  <link rel="stylesheet" href="css/style.css">
-
-
-  <style>
-
-    /* =================================
-       SUPPORT PAGE
-       ================================= */
-
-    .support-page {
-      overflow: hidden;
-    }
-
-    .support-content {
-      max-width: 760px;
-    }
-
-
-    /* =================================
-       PAYMENT BOX
-       ================================= */
-
-    .support-payment {
-      position: relative;
-
-      margin-top: 75px;
-
-      padding: 32px;
-
-      border: 1px solid var(--line);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.025),
-          rgba(255,255,255,0)
-        );
-
-      overflow: hidden;
-    }
-
-
-    /* subtle corner detail */
-
-    .support-payment::before {
-      content: "";
-
-      position: absolute;
-
-      width: 120px;
-      height: 120px;
-
-      top: -70px;
-      right: -70px;
-
-      border: 1px solid #252525;
-
-      transform: rotate(45deg);
-
-      pointer-events: none;
-    }
-
-
-    /* =================================
-       PAYMENT HEADER
-       ================================= */
-
-    .support-label {
-      position: relative;
-
-      display: flex;
-
-      align-items: baseline;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding-bottom: 22px;
-
-      border-bottom: 1px solid var(--line);
-    }
-
-
-    .support-label span {
-      color: var(--text);
-
-      font-size: 0.72rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.14em;
-    }
-
-
-    .support-label small {
-      color: var(--dim);
-
-      font-size: 0.6rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.1em;
-    }
-
-
-    /* =================================
-       AMOUNT BUTTONS
-       ================================= */
-
-    .amount-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 6px;
-
-      margin-top: 22px;
-    }
-
-
-    .amount-button {
-      position: relative;
-
-      height: 58px;
-
-      border: 1px solid var(--line);
-
-      background: transparent;
-
-      color: #777;
-
-      cursor: pointer;
-
-      font-family: inherit;
-
-      font-size: 0.8rem;
-
-      transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-
-    .amount-button:hover {
-      color: var(--text);
-
-      border-color: #444;
-
-      background: #111;
-    }
-
-
-    .amount-button.selected {
-      color: #080808;
-
-      background: #f2f2f2;
-
-      border-color: #f2f2f2;
-    }
-
-
-    /* =================================
-       CUSTOM AMOUNT
-       ================================= */
-
-    .custom-amount {
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      height: 58px;
-
-      margin-top: 6px;
-
-      border: 1px solid var(--line);
-
-      background: #0b0b0b;
-
-      transition:
-        border-color 0.2s ease;
-    }
-
-
-    .custom-amount:focus-within {
-      border-color: #555;
-    }
-
-
-    .custom-amount > span {
-      padding-left: 17px;
-
-      color: #777;
-
-      font-size: 0.8rem;
-    }
-
-
-    .custom-amount input {
-      width: 100%;
-
-      height: 100%;
-
-      padding: 0 16px 0 8px;
-
-      border: none;
-
-      outline: none;
-
-      background: transparent;
-
-      color: var(--text);
-
-      font-family: inherit;
-
-      font-size: 0.8rem;
-    }
-
-
-    .custom-amount input::placeholder {
-      color: #444;
-    }
-
-
-    .custom-amount input::-webkit-inner-spin-button,
-    .custom-amount input::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-
-      margin: 0;
-    }
-
-
-    .custom-amount input[type="number"] {
-      -moz-appearance: textfield;
-    }
-
-
-    /* =================================
-       MAIN SUPPORT BUTTON
-       ================================= */
-
-    .support-button {
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      width: 100%;
-
-      height: 68px;
-
-      margin-top: 18px;
-
-      padding: 0 20px;
-
-      border: 1px solid #eaeaea;
-
-      background: #eaeaea;
-
-      color: #080808;
-
-      cursor: pointer;
-
-      font-family: inherit;
-
-      font-size: 0.78rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.08em;
-
-      transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-
-    .support-button b {
-      font-size: 1.1rem;
-
-      font-weight: 400;
-
-      transition:
-        transform 0.2s ease;
-    }
-
-
-    .support-button:hover {
-      background: transparent;
-
-      color: #f2f2f2;
-
-      border-color: #444;
-    }
-
-
-    .support-button:hover b {
-      transform: translate(3px, -3px);
-    }
-
-
-    /* =================================
-       PAYMENT NOTE
-       ================================= */
-
-    .payment-note {
-      margin-top: 13px;
-
-      color: #3f3f3f;
-
-      font-size: 0.58rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.1em;
-    }
-
-
-    /* =================================
-       INSTAGRAM
-       ================================= */
-
-    .find-me {
-      margin-top: 100px;
-    }
-
-
-    /* =================================
-       MOBILE
-       ================================= */
-
-    @media (max-width: 600px) {
-
-      .support-content {
-        width: 100%;
-      }
-
-
-      .support-payment {
-        margin-top: 55px;
-
-        padding: 20px;
-      }
-
-
-      .support-label {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 6px;
-      }
-
-
-      .amount-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-
-        gap: 6px;
-
-        margin-top: 18px;
-      }
-
-
-      .amount-button {
-        height: 56px;
-      }
-
-
-      .custom-amount {
-        height: 56px;
-      }
-
-
-      .support-button {
-        height: 62px;
-
-        margin-top: 15px;
-      }
-
-
-      .payment-note {
-        font-size: 0.52rem;
-      }
-
-
-      .find-me {
-        margin-top: 75px;
-      }
-
-    }
-
-  </style>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>support · rishi</title>
+    <meta name="description" content="support rishi via UPI — no middlemen, no business license." />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- ==========================================
+    STYLES — fully responsive, dark theme, rich animations
+    ========================================== -->
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b0b0b;
+            --card-bg: #121212;
+            --border: #262626;
+            --text: #efefef;
+            --dim: #777;
+            --muted: #3a3a3a;
+            --accent: #f2f2f2;
+            --success: #6fcf97;
+            --success-glow: rgba(111, 207, 151, 0.25);
+            --error: #f28b82;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px 40px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- SCROLLBAR ---------- */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--muted);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* ---------- TYPOGRAPHY ---------- */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* ---------- HEADER ---------- */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 350;
+            letter-spacing: -0.03em;
+            color: #fff;
+            transition: var(--transition);
+        }
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        .nav a {
+            color: var(--dim);
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: var(--transition);
+        }
+        .nav a:hover {
+            color: #fff;
+        }
+        .nav a:hover::after {
+            width: 100%;
+        }
+        .nav a.active {
+            color: #fff;
+        }
+        .nav a.active::after {
+            width: 100%;
+        }
+
+        /* ---------- CARD ---------- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle ambient glow */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 20%, rgba(111, 207, 151, 0.03), transparent 70%);
+            pointer-events: none;
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+        .card-title span {
+            color: var(--dim);
+        }
+
+        .card-sub {
+            color: var(--dim);
+            font-size: 0.95rem;
+            border-left: 2px solid var(--border);
+            padding-left: 16px;
+            margin-top: 6px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- AMOUNT GRID ---------- */
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .amount-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: #aaa;
+            padding: 14px 0;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .amount-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .amount-btn:hover {
+            border-color: #555;
+            color: #fff;
+            background: #1a1a1a;
+        }
+        .amount-btn.active {
+            background: var(--accent);
+            color: #0b0b0b;
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(242, 242, 242, 0.08);
+        }
+        .amount-btn.active::after {
+            opacity: 0;
+        }
+
+        /* ---------- INPUT GROUPS ---------- */
+        .input-group,
+        .email-group {
+            display: flex;
+            align-items: center;
+            background: #181818;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0 16px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        .input-group {
+            margin: 8px 0 4px 0;
+        }
+        .email-group {
+            margin: 16px 0 20px 0;
+        }
+        .input-group:focus-within,
+        .email-group:focus-within {
+            border-color: #555;
+        }
+        .input-group span,
+        .email-group .icon {
+            color: var(--dim);
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        .input-group input,
+        .email-group input {
+            background: transparent;
+            border: none;
+            padding: 14px 0;
+            width: 100%;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            font-family: inherit;
+        }
+        .input-group input::placeholder,
+        .email-group input::placeholder {
+            color: #3f3f3f;
+        }
+        .input-group input[type="number"]::-webkit-inner-spin-button,
+        .input-group input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .input-group input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        /* ---------- PRIMARY PAY BUTTON ---------- */
+        .pay-btn {
+            width: 100%;
+            padding: 18px 20px;
+            background: var(--accent);
+            color: #0b0b0b;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            margin-top: 4px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .pay-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .pay-btn:hover {
+            background: #ffffff;
+            transform: scale(1.01);
+            box-shadow: 0 8px 30px rgba(242, 242, 242, 0.05);
+        }
+        .pay-btn:hover::after {
+            opacity: 1;
+        }
+        .pay-btn:active {
+            transform: scale(0.97);
+        }
+        .pay-btn .arrow {
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+        .pay-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ---------- DIVIDER ---------- */
+        .divider {
+            border-top: 1px solid var(--border);
+            margin: 28px 0 22px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- QR + UPI INFO ---------- */
+        .qr-section {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .qr-box {
+            background: #fff;
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            flex: 0 0 124px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+        .qr-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            background: #fff;
+        }
+        .qr-box:hover {
+            transform: scale(1.02);
+        }
+
+        .upi-text {
+            flex: 1;
+            min-width: 160px;
+        }
+        .upi-text .label {
+            font-size: 0.65rem;
+            color: var(--dim);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .upi-id-wrapper {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 6px 0 4px;
+        }
+        .upi-id-wrapper code {
+            background: #1a1a1a;
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            color: #ddd;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            word-break: break-all;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--dim);
+            padding: 6px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .copy-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+        .copy-btn.copied {
+            border-color: var(--success);
+            color: var(--success);
+        }
+        .upi-text .hint {
+            font-size: 0.6rem;
+            color: #3f3f3f;
+            margin-top: 6px;
+        }
+
+        /* ---------- TIMELINE ---------- */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 24px 0 8px;
+            padding: 0 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 12%;
+            right: 12%;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            gap: 6px;
+            flex: 1;
+            transition: var(--transition);
+        }
+        .step .circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--dim);
+            transition: var(--transition);
+        }
+        .step.active .circle {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #0b0b0b;
+            box-shadow: 0 0 20px rgba(242, 242, 242, 0.1);
+        }
+        .step.done .circle {
+            border-color: var(--success);
+            background: var(--success);
+            color: #0b0b0b;
+            box-shadow: 0 0 20px var(--success-glow);
+        }
+        .step .label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--dim);
+            text-align: center;
+        }
+        .step.active .label {
+            color: #fff;
+        }
+        .step.done .label {
+            color: var(--success);
+        }
+
+        /* ---------- CONFIRM SECTION ---------- */
+        .confirm-section {
+            margin-top: 24px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .confirm-btn {
+            background: #1a2a22;
+            border: 1px solid #2a4a3a;
+            color: var(--success);
+            padding: 16px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .confirm-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(111, 207, 151, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .confirm-btn:hover {
+            background: #1f3328;
+            border-color: #3a6a4a;
+            transform: scale(1.01);
+        }
+        .confirm-btn:hover::after {
+            opacity: 1;
+        }
+        .confirm-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            background: #141414;
+            border-color: var(--border);
+            color: #555;
+        }
+        .confirm-btn .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(111, 207, 151, 0.2);
+            border-top-color: var(--success);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        .confirm-btn.loading .spinner {
+            display: inline-block;
+        }
+        .confirm-btn.loading .btn-text {
+            opacity: 0.7;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ---------- STATUS MESSAGES ---------- */
+        .status-msg {
+            margin-top: 16px;
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: none;
+            background: #161616;
+            border: 1px solid var(--border);
+            text-align: left;
+            line-height: 1.6;
+            animation: fadeSlide 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .status-msg.show {
+            display: block;
+        }
+        .status-msg.success {
+            border-color: #2a5a3a;
+            color: var(--success);
+            background: #0f1f15;
+            box-shadow: 0 0 30px rgba(111, 207, 151, 0.05);
+        }
+        .status-msg.error {
+            border-color: #5a2a2a;
+            color: var(--error);
+            background: #1f0f0f;
+        }
+        .status-msg.info {
+            border-color: #2a3a5a;
+            color: #8ab4f8;
+            background: #0f1520;
+        }
+
+        /* ---------- SUCCESS ANIMATION OVERLAY ---------- */
+        .success-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+        .success-overlay.show {
+            display: flex;
+        }
+
+        .success-modal {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 48px 40px 40px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        .success-modal::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(111, 207, 151, 0.06), transparent 60%);
+            pointer-events: none;
+        }
+
+        .success-icon-wrap {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        .success-icon-wrap svg {
+            width: 100px;
+            height: 100px;
+        }
+        .success-ring {
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 188.5;
+            stroke-dashoffset: 188.5;
+            animation: drawCircle 0.8s ease forwards 0.2s;
+        }
+        .success-check {
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: drawCheck 0.5s ease forwards 0.7s;
+        }
+        .success-glow-ring {
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.15;
+            animation: pulseGlow 2s ease-in-out infinite 1s;
+        }
+
+        @keyframes drawCircle {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.25;
+                transform: scale(1.05);
+            }
+        }
+
+        .success-modal h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .success-modal .sub {
+            color: var(--dim);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .success-modal .receipt-box {
+            background: #161616;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            text-align: left;
+            margin: 16px 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .success-modal .receipt-box .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.85rem;
+        }
+        .success-modal .receipt-box .row .label {
+            color: var(--dim);
+        }
+        .success-modal .receipt-box .row .value {
+            color: #fff;
+            font-weight: 500;
+        }
+        .success-modal .receipt-box .divider-sm {
+            border-top: 1px solid var(--border);
+            margin: 8px 0;
+        }
+
+        .success-modal .spam-note {
+            font-size: 0.7rem;
+            color: var(--dim);
+            background: #161616;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .success-modal .spam-note strong {
+            color: #fff;
+        }
+
+        .success-modal .close-success-btn {
+            background: var(--accent);
+            color: #0b0b0b;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            position: relative;
+            z-index: 1;
+        }
+        .success-modal .close-success-btn:hover {
+            background: #ffffff;
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ---------- CONFETTI CANVAS ---------- */
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ---------- FOOTNOTE ---------- */
+        .footnote {
+            font-size: 0.55rem;
+            color: #2a2a2a;
+            margin-top: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq-section {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+        .faq-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dim);
+            margin-bottom: 16px;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #ddd;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition);
+        }
+        .faq-q:hover {
+            color: #fff;
+        }
+        .faq-q .icon {
+            color: var(--dim);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .faq-q.open .icon {
+            transform: rotate(45deg);
+        }
+        .faq-a {
+            font-size: 0.85rem;
+            color: var(--dim);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+            padding-top: 0;
+            opacity: 0;
+        }
+        .faq-a.open {
+            max-height: 200px;
+            padding-top: 8px;
+            opacity: 1;
+        }
+
+        /* ---------- TOAST ---------- */
+        .toast-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 360px;
+            width: 100%;
+            pointer-events: none;
+        }
+        .toast {
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 0.85rem;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            animation: toastIn 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+        .toast.success {
+            border-color: var(--success);
+        }
+        .toast.error {
+            border-color: var(--error);
+        }
+        .toast .toast-icon {
+            font-size: 1.2rem;
+        }
+        @keyframes toastIn {
+            0% {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ---------- FOOTER ---------- */
+        .site-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #222;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            width: 100%;
+        }
+        .site-footer a {
+            color: var(--dim);
+            transition: var(--transition);
+        }
+        .site-footer a:hover {
+            color: #fff;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 550px) {
+            .card {
+                padding: 24px 16px;
+            }
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            .qr-section {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            .qr-box {
+                flex: 0 0 160px;
+                width: 160px;
+            }
+            .upi-id-wrapper {
+                justify-content: center;
+            }
+            .timeline {
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+            .timeline::before {
+                display: none;
+            }
+            .step {
+                flex: 0 0 auto;
+                padding: 0 8px;
+            }
+            .card-title {
+                font-size: 1.8rem;
+            }
+            .nav {
+                gap: 14px;
+                font-size: 0.75rem;
+            }
+            .toast-container {
+                top: 12px;
+                right: 12px;
+                max-width: calc(100% - 24px);
+            }
+            .success-modal {
+                padding: 32px 20px 28px;
+            }
+            .success-modal .receipt-box .row {
+                font-size: 0.75rem;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .amount-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .amount-btn {
+                font-size: 0.8rem;
+                padding: 12px 0;
+            }
+            .card {
+                padding: 16px 12px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- ==========================================
+    CONFETTI CANVAS
+    ========================================== -->
+    <canvas id="confettiCanvas"></canvas>
 
-  <!-- =================================
-       HEADER
-       ================================= -->
+    <!-- ==========================================
+    SUCCESS OVERLAY
+    ========================================== -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-modal">
+            <div class="success-icon-wrap">
+                <svg viewBox="0 0 100 100">
+                    <circle class="success-ring" cx="50" cy="50" r="30" />
+                    <circle class="success-glow-ring" cx="50" cy="50" r="38" />
+                    <path class="success-check" d="M38 52l8 8 18-18" />
+                </svg>
+            </div>
+            <h2>Payment Confirmed</h2>
+            <p class="sub">Thank you for your support 🙏</p>
 
-  <header class="site-header">
+            <div class="receipt-box">
+                <div class="row">
+                    <span class="label">Amount</span>
+                    <span class="value" id="receiptAmount">₹20</span>
+                </div>
+                <div class="row">
+                    <span class="label">UPI ID</span>
+                    <span class="value" id="receiptUpi">rishi09kumarr@oksbi</span>
+                </div>
+                <div class="divider-sm"></div>
+                <div class="row">
+                    <span class="label">Receipt sent to</span>
+                    <span class="value" id="receiptEmail">—</span>
+                </div>
+                <div class="row">
+                    <span class="label">Transaction ID</span>
+                    <span class="value" id="receiptTxn">—</span>
+                </div>
+            </div>
 
-    <a
-      href="index.html"
-      class="logo"
-    >
-      rishi
-    </a>
+            <div class="spam-note">
+                📬 <strong>Check your spam folder</strong> if you don't see the receipt email in your inbox within 2 minutes.
+            </div>
 
+            <button class="close-success-btn" id="closeSuccessBtn">Continue</button>
+        </div>
+    </div>
 
-    <nav class="nav">
+    <!-- ==========================================
+    TOAST CONTAINER
+    ========================================== -->
+    <div id="toastContainer" class="toast-container"></div>
 
-      <a href="about.html">
-        about
-      </a>
+    <!-- ==========================================
+    MAIN CONTAINER
+    ========================================== -->
+    <div class="container">
 
-      <a href="things.html">
-        things
-      </a>
+        <!-- ========== HEADER ========== -->
+        <header class="site-header">
+            <a href="index.html" class="logo">rishi</a>
+            <nav class="nav">
+                <a href="about.html">about</a>
+                <a href="support.html" class="active">support</a>
+            </nav>
+        </header>
 
-      <a href="photos.html">
-        photos
-      </a>
+        <!-- ========== CARD ========== -->
+        <div class="card">
 
-      <a href="now.html">
-        now
-      </a>
+            <h1 class="card-title">support <span>·</span></h1>
+            <p class="card-sub">if you like what i make. just UPI. no middlemen.</p>
 
-      <a
-        href="support.html"
-        class="active"
-      >
-        support
-      </a>
+            <!-- AMOUNT GRID -->
+            <div class="amount-grid" id="amountGrid">
+                <button class="amount-btn" data-val="10">₹10</button>
+                <button class="amount-btn active" data-val="20">₹20</button>
+                <button class="amount-btn" data-val="50">₹50</button>
+                <button class="amount-btn" data-val="100">₹100</button>
+            </div>
 
-    </nav>
+            <!-- CUSTOM AMOUNT -->
+            <div class="input-group">
+                <span>₹</span>
+                <input type="number" id="customAmount" min="10" step="1" placeholder="custom amount" />
+            </div>
 
-  </header>
+            <!-- EMAIL INPUT -->
+            <div class="email-group">
+                <span class="icon">✉</span>
+                <input type="email" id="userEmail" placeholder="your email for receipt &amp; thank you" />
+            </div>
 
+            <!-- PAY BUTTON -->
+            <button class="pay-btn" id="payBtn">
+                <span>pay via UPI</span>
+                <span class="arrow">↗</span>
+            </button>
 
+            <!-- DIVIDER -->
+            <div class="divider"></div>
 
-  <!-- =================================
-       MAIN
-       ================================= -->
+            <!-- QR + UPI INFO -->
+            <div class="qr-section">
+                <div class="qr-box">
+                    <img id="qrImage"
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=rishi09kumarr@oksbi&am=20"
+                    alt="UPI QR Code" />
+                </div>
+                <div class="upi-text">
+                    <div class="label">scan or copy</div>
+                    <div class="upi-id-wrapper">
+                        <code id="upiDisplay">rishi09kumarr@oksbi</code>
+                        <button class="copy-btn" id="copyBtn">copy</button>
+                    </div>
+                    <div class="hint">works with GPay, PhonePe, PayTM &amp; all UPI apps</div>
+                </div>
+            </div>
 
-  <main class="page support-page">
+            <!-- TIMELINE -->
+            <div class="timeline" id="timeline">
+                <div class="step active" data-step="1">
+                    <div class="circle">1</div>
+                    <span class="label">Pay via UPI</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="circle">2</div>
+                    <span class="label">Confirm &amp; get receipt</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="circle">3</div>
+                    <span class="label">Done ✓</span>
+                </div>
+            </div>
 
+            <!-- CONFIRM SECTION -->
+            <div class="confirm-section">
+                <button class="confirm-btn" id="confirmBtn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">✅ I have sent the payment — send me a receipt</span>
+                </button>
+                <div id="statusMsg" class="status-msg"></div>
+            </div>
 
-    <!-- PAGE HEADING -->
+            <div class="footnote">
+                you will get a confirmation email instantly. check your spam folder if you don't see it.
+            </div>
 
-    <section class="page-heading">
+            <!-- ========== FAQ ========== -->
+            <div class="faq-section">
+                <div class="faq-title">frequently asked</div>
 
-      <div class="heading-meta">
+                <div class="faq-item">
+                    <div class="faq-q" data-target="faq1">
+                        <span>How do I pay?</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="faq-a" id="faq1">Click the "pay via UPI" button — it opens your UPI app with the amount pre-filled. You can also scan the QR code with any UPI app.</div>
+                </div>
 
-        <span class="eyebrow">
-          05 / support
-        </span>
+                <div class="faq-item">
+                    <div class="faq-q" data-target="faq2">
+                        <span>Do I get a receipt?</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="faq-a" id="faq2">Yes! After you pay, click the "I have sent the payment" button and enter your email. You'll receive a confirmation email instantly (check your spam folder).</div>
+                </div>
 
-        <span class="heading-number">
-          05
-        </span>
+                <div class="faq-item">
+                    <div class="faq-q" data-target="faq3">
+                        <span>Is this safe?</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="faq-a" id="faq3">Absolutely. You're using your own UPI app — we never see your bank details. This is just a payment request page, like a personal collection link.</div>
+                </div>
 
-      </div>
-
-
-      <h1>
-        if you<br>
-        want to.
-      </h1>
-
-    </section>
-
-
-
-    <!-- SUPPORT CONTENT -->
-
-    <section class="support-content">
-
-
-      <p class="big-copy">
-        if you like what i make and want to help me
-        keep making things, you can support me here.
-      </p>
-
-
-      <p class="support-description">
-        no subscriptions. no memberships.
-        just a little support if you feel like it.
-      </p>
-
-
-
-      <!-- =================================
-           PAYMENT
-           ================================= -->
-
-      <section class="support-payment">
-
-
-        <div class="support-label">
-
-          <span>
-            support
-          </span>
-
-          <small>
-            choose an amount
-          </small>
-
+                <div class="faq-item">
+                    <div class="faq-q" data-target="faq4">
+                        <span>Do you have a business license?</span>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="faq-a" id="faq4">No! This is purely personal support. No PAN, no GST, no middlemen. Just raw, direct UPI between humans.</div>
+                </div>
+            </div>
         </div>
 
-
-
-        <!-- AMOUNTS -->
-
-        <div class="amount-grid">
-
-          <button
-            class="amount-button"
-            data-amount="10"
-            type="button"
-          >
-            ₹10
-          </button>
-
-
-          <button
-            class="amount-button selected"
-            data-amount="20"
-            type="button"
-          >
-            ₹20
-          </button>
-
-
-          <button
-            class="amount-button"
-            data-amount="50"
-            type="button"
-          >
-            ₹50
-          </button>
-
-
-          <button
-            class="amount-button"
-            data-amount="100"
-            type="button"
-          >
-            ₹100
-          </button>
-
-        </div>
-
-
-
-        <!-- CUSTOM -->
-
-        <div class="custom-amount">
-
-          <span>
-            ₹
-          </span>
-
-          <input
-            type="number"
-            id="customAmount"
-            min="10"
-            step="1"
-            inputmode="numeric"
-            placeholder="custom amount"
-          >
-
-        </div>
-
-
-
-        <!-- SUPPORT -->
-
-        <button
-          class="support-button"
-          id="supportButton"
-          type="button"
-        >
-
-          <span>
-            support ₹<span id="selectedAmount">20</span>
-          </span>
-
-          <b>
-            ↗
-          </b>
-
-        </button>
-
-
-        <p class="payment-note">
-          minimum ₹10 · opens your UPI app
-        </p>
-
-
-      </section>
-
-
-
-      <!-- =================================
-           FIND ME
-           ================================= -->
-
-      <section class="find-me">
-
-
-        <span class="eyebrow">
-          find me
-        </span>
-
-
-        <p>
-          if you actually want to find me,
-          i'm probably here.
-        </p>
-
-
-
-        <a
-          href="https://www.instagram.com/throughrishi"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="instagram-link"
-        >
-
-          <span class="instagram-name">
-            instagram
-          </span>
-
-
-          <span class="instagram-handle">
-            @throughrishi
-          </span>
-
-
-          <b>
-            ↗
-          </b>
-
-        </a>
-
-
-      </section>
-
-
-    </section>
-
-
-  </main>
-
-
-
-  <!-- =================================
-       JAVASCRIPT
-       ================================= -->
-
-  <script>
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      () => {
-
-
-        /*
-         * Your UPI ID
-         */
-
-        const upiId =
-          "rishi09kumarr@oksbi";
-
-
-        /*
-         * Name shown in the UPI app
-         */
-
-        const name =
-          "Rishi";
-
-
-        /*
-         * Elements
-         */
-
-        const amountButtons =
-          document.querySelectorAll(
-            ".amount-button"
-          );
-
-
-        const customInput =
-          document.getElementById(
-            "customAmount"
-          );
-
-
-        const supportButton =
-          document.getElementById(
-            "supportButton"
-          );
-
-
-        const selectedAmount =
-          document.getElementById(
-            "selectedAmount"
-          );
-
-
-        /*
-         * Default amount
-         */
-
-        let amount = 20;
-
-
-
-        /*
-         * Update displayed amount
-         */
-
-        function updateAmount(value) {
-
-          amount =
-            Number(value);
-
-          selectedAmount.textContent =
-            amount;
-
-        }
-
-
-
-        /*
-         * Select preset amount
-         */
-
-        function selectButton(button) {
-
-
-          amountButtons.forEach(
-            (item) => {
-
-              item.classList.remove(
-                "selected"
-              );
-
-            }
-          );
-
-
-          button.classList.add(
-            "selected"
-          );
-
-
-          /*
-           * Clear custom amount
-           */
-
-          customInput.value = "";
-
-
-          updateAmount(
-            button.dataset.amount
-          );
-
-        }
-
-
-
-        /*
-         * Preset buttons
-         */
-
-        amountButtons.forEach(
-          (button) => {
-
-            button.addEventListener(
-              "click",
-              () => {
-
-                selectButton(button);
-
-              }
-            );
-
-          }
-        );
-
-
-
-        /*
-         * Custom amount
-         */
-
-        customInput.addEventListener(
-          "input",
-          () => {
-
-
-            const value =
-              Number(
-                customInput.value
-              );
-
-
-            /*
-             * Remove selected preset
-             */
-
-            amountButtons.forEach(
-              (button) => {
-
-                button.classList.remove(
-                  "selected"
-                );
-
-              }
-            );
-
-
-            if (value >= 10) {
-
-              updateAmount(value);
-
+        <!-- ========== FOOTER ========== -->
+        <footer class="site-footer">
+            <p>
+                made with 🖤 &bull;
+                <a href="https://www.instagram.com/throughrishi" target="_blank" rel="noopener">@throughrishi</a>
+                &bull; no business license needed
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- ==========================================
+    JAVASCRIPT — full logic with animations, confetti, and email
+    ========================================== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ==========================================
+            // 1. CONFIGURATION
+            // ==========================================
+
+            const UPI_ID = 'rishi09kumarr@oksbi';
+            const NAME = 'rishi';
+            const WEB3FORMS_ACCESS_KEY = 'b4a594d4-f473-4378-abe7-1e8455aa4468';
+            const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+            const ADMIN_EMAIL = 'io235234fg@gmail.com';
+
+            // ==========================================
+            // 2. DOM REFS
+            // ==========================================
+
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const customInput = document.getElementById('customAmount');
+            const userEmail = document.getElementById('userEmail');
+            const payBtn = document.getElementById('payBtn');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const statusMsg = document.getElementById('statusMsg');
+            const qrImage = document.getElementById('qrImage');
+            const upiDisplay = document.getElementById('upiDisplay');
+            const copyBtn = document.getElementById('copyBtn');
+            const toastContainer = document.getElementById('toastContainer');
+            const timelineSteps = document.querySelectorAll('.step');
+            const successOverlay = document.getElementById('successOverlay');
+            const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+            const receiptAmount = document.getElementById('receiptAmount');
+            const receiptUpi = document.getElementById('receiptUpi');
+            const receiptEmail = document.getElementById('receiptEmail');
+            const receiptTxn = document.getElementById('receiptTxn');
+            const confettiCanvas = document.getElementById('confettiCanvas');
+
+            let currentAmount = 20;
+            let isConfirming = false;
+            let confettiInterval = null;
+
+            // ==========================================
+            // 3. CONFETTI SYSTEM
+            // ==========================================
+
+            function initConfetti() {
+                const ctx = confettiCanvas.getContext('2d');
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                let particles = [];
+                let animationId = null;
+                let running = false;
+
+                function resize() {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    confettiCanvas.width = width;
+                    confettiCanvas.height = height;
+                }
+
+                window.addEventListener('resize', resize);
+                resize();
+
+                class Particle {
+                    constructor() {
+                        this.reset();
+                    }
+                    reset() {
+                        this.x = Math.random() * width;
+                        this.y = Math.random() * height - height;
+                        this.size = Math.random() * 6 + 3;
+                        this.speed = Math.random() * 4 + 2;
+                        this.angle = Math.random() * Math.PI * 2;
+                        this.rotation = Math.random() * 360;
+                        this.rotationSpeed = (Math.random() - 0.5) * 6;
+                        this.color = `hsl(${Math.random() * 60 + 120}, 80%, 60%)`;
+                        this.wobble = Math.random() * 10;
+                        this.wobbleSpeed = Math.random() * 0.05 + 0.02;
+                        this.opacity = 1;
+                        this.life = 1;
+                        this.decay = Math.random() * 0.005 + 0.003;
+                    }
+                    update() {
+                        this.y += this.speed;
+                        this.x += Math.sin(this.angle + this.wobble) * 0.8;
+                        this.wobble += this.wobbleSpeed;
+                        this.rotation += this.rotationSpeed;
+                        this.life -= this.decay;
+                        this.opacity = this.life;
+                        if (this.life <= 0 || this.y > height + 20) {
+                            this.reset();
+                            this.y = -20 - Math.random() * 100;
+                            this.life = 1;
+                            this.opacity = 1;
+                        }
+                    }
+                    draw(ctx) {
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.rotate((this.rotation * Math.PI) / 180);
+                        ctx.globalAlpha = this.opacity * 0.8;
+                        ctx.fillStyle = this.color;
+                        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.6);
+                        ctx.restore();
+                    }
+                }
+
+                function initParticles(count) {
+                    particles = [];
+                    for (let i = 0; i < count; i++) {
+                        const p = new Particle();
+                        p.y = Math.random() * height;
+                        p.life = Math.random() * 0.5 + 0.5;
+                        p.opacity = p.life;
+                        particles.push(p);
+                    }
+                }
+
+                function animate() {
+                    if (!running) return;
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => {
+                        p.update();
+                        p.draw(ctx);
+                    });
+                    animationId = requestAnimationFrame(animate);
+                }
+
+                function start() {
+                    if (running) return;
+                    running = true;
+                    initParticles(120);
+                    animate();
+                }
+
+                function stop() {
+                    running = false;
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
+                    ctx.clearRect(0, 0, width, height);
+                    particles = [];
+                }
+
+                return { start, stop, resize };
             }
 
-          }
-        );
+            const confetti = initConfetti();
 
+            // ==========================================
+            // 4. TOAST SYSTEM
+            // ==========================================
 
+            function showToast(message, type) {
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                if (type === 'success') toast.classList.add('success');
+                if (type === 'error') toast.classList.add('error');
 
-        /*
-         * Open UPI payment
-         */
+                const icon = document.createElement('span');
+                icon.className = 'toast-icon';
+                icon.textContent = type === 'success' ? '✅' : type === 'error' ? '⚠️' : '📢';
+                toast.appendChild(icon);
 
-        supportButton.addEventListener(
-          "click",
-          () => {
+                const text = document.createElement('span');
+                text.textContent = message;
+                toast.appendChild(text);
 
+                toastContainer.appendChild(toast);
 
-            let finalAmount =
-              Number(
-                customInput.value
-              );
-
-
-            /*
-             * Use selected preset
-             * if custom amount
-             * isn't being used
-             */
-
-            if (
-              !finalAmount ||
-              finalAmount < 10
-            ) {
-
-              finalAmount =
-                amount;
-
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(30px)';
+                    setTimeout(() => toast.remove(), 300);
+                }, 4500);
             }
 
+            // ==========================================
+            // 5. UPDATE QR & AMOUNT
+            // ==========================================
 
-            /*
-             * Minimum amount
-             */
-
-            if (
-              !finalAmount ||
-              finalAmount < 10
-            ) {
-
-              alert(
-                "minimum support amount is ₹10"
-              );
-
-              return;
-
+            function updateAmount(amount) {
+                if (amount < 10) amount = 10;
+                currentAmount = Math.round(amount);
+                const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${NAME}&am=${currentAmount}&cu=INR`;
+                const encoded = encodeURIComponent(upiUrl);
+                qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encoded}`;
+                const span = payBtn.querySelector('span:first-child');
+                if (span) {
+                    span.textContent = `pay ₹${currentAmount} via UPI`;
+                }
             }
 
+            // ==========================================
+            // 6. PRESET BUTTONS
+            // ==========================================
 
-            /*
-             * Create UPI URL
-             */
+            amountBtns.forEach((btn) => {
+                btn.addEventListener('click', function() {
+                    amountBtns.forEach((b) => b.classList.remove('active'));
+                    this.classList.add('active');
+                    customInput.value = '';
+                    const val = Number(this.dataset.val);
+                    updateAmount(val);
+                    hideStatus();
+                });
+            });
 
-            const upiUrl =
-              "upi://pay" +
-              "?pa=" +
-              encodeURIComponent(upiId) +
-              "&pn=" +
-              encodeURIComponent(name) +
-              "&am=" +
-              encodeURIComponent(finalAmount) +
-              "&cu=INR";
+            // ==========================================
+            // 7. CUSTOM INPUT
+            // ==========================================
 
+            customInput.addEventListener('input', function() {
+                amountBtns.forEach((b) => b.classList.remove('active'));
+                const val = Number(this.value);
+                if (val >= 10) {
+                    updateAmount(val);
+                    hideStatus();
+                } else if (this.value === '') {
+                    const active = document.querySelector('.amount-btn.active');
+                    if (active) {
+                        updateAmount(Number(active.dataset.val));
+                    } else {
+                        updateAmount(20);
+                    }
+                }
+            });
 
-            /*
-             * Open UPI app
-             */
+            // ==========================================
+            // 8. PAY BUTTON (OPEN UPI)
+            // ==========================================
 
-            window.location.href =
-              upiUrl;
+            payBtn.addEventListener('click', function() {
+                let amt = Number(customInput.value);
+                if (!amt || amt < 10) amt = currentAmount;
+                if (amt < 10) {
+                    showToast('Minimum support amount is ₹10', 'error');
+                    return;
+                }
 
-          }
-        );
+                const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${NAME}&am=${amt}&cu=INR`;
+                window.location.href = upiUrl;
 
+                setTimeout(() => {
+                    navigator.clipboard?.writeText(UPI_ID).catch(() => {});
+                    showToast('UPI app opened. If not, copy the UPI ID manually.', 'info');
+                }, 800);
 
-      }
-    );
+                setTimelineStep(1);
+            });
 
-  </script>
+            // ==========================================
+            // 9. COPY UPI ID
+            // ==========================================
 
+            copyBtn.addEventListener('click', function() {
+                const text = UPI_ID;
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        this.textContent = 'copied!';
+                        this.classList.add('copied');
+                        showToast('UPI ID copied to clipboard!', 'success');
+                        setTimeout(() => {
+                            this.textContent = 'copy';
+                            this.classList.remove('copied');
+                        }, 2500);
+                    })
+                    .catch(() => {
+                        const range = document.createRange();
+                        range.selectNode(upiDisplay);
+                        window.getSelection().removeAllRanges();
+                        window.getSelection().addRange(range);
+                        document.execCommand('copy');
+                        this.textContent = 'copied!';
+                        this.classList.add('copied');
+                        showToast('UPI ID copied!', 'success');
+                        setTimeout(() => {
+                            this.textContent = 'copy';
+                            this.classList.remove('copied');
+                        }, 2500);
+                    });
+            });
+
+            // ==========================================
+            // 10. STATUS MESSAGE HELPERS
+            // ==========================================
+
+            function showStatus(message, type) {
+                statusMsg.className = `status-msg show ${type}`;
+                statusMsg.innerHTML = message;
+            }
+
+            function hideStatus() {
+                statusMsg.className = 'status-msg';
+                statusMsg.innerHTML = '';
+            }
+
+            // ==========================================
+            // 11. TIMELINE
+            // ==========================================
+
+            function setTimelineStep(step) {
+                timelineSteps.forEach((el, idx) => {
+                    const num = idx + 1;
+                    el.classList.remove('active', 'done');
+                    if (num < step) el.classList.add('done');
+                    if (num === step) el.classList.add('active');
+                });
+            }
+
+            // ==========================================
+            // 12. GENERATE TRANSACTION ID
+            // ==========================================
+
+            function generateTxnId() {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let result = 'TXN-';
+                for (let i = 0; i < 10; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+
+            // ==========================================
+            // 13. SHOW SUCCESS OVERLAY
+            // ==========================================
+
+            function showSuccessOverlay(email, amount) {
+                receiptAmount.textContent = `₹${amount}`;
+                receiptUpi.textContent = UPI_ID;
+                receiptEmail.textContent = email || '—';
+                receiptTxn.textContent = generateTxnId();
+
+                successOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+
+                // Start confetti
+                confetti.start();
+
+                // Auto-close after 8 seconds
+                setTimeout(() => {
+                    // but only if not already closed
+                }, 8000);
+            }
+
+            function hideSuccessOverlay() {
+                successOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+                confetti.stop();
+            }
+
+            closeSuccessBtn.addEventListener('click', hideSuccessOverlay);
+
+            // Click outside to close
+            successOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideSuccessOverlay();
+                }
+            });
+
+            // ==========================================
+            // 14. CONFIRM BUTTON (SEND EMAIL)
+            // ==========================================
+
+            confirmBtn.addEventListener('click', function() {
+                if (isConfirming) return;
+
+                const email = userEmail.value.trim();
+                if (!email || !email.includes('@')) {
+                    showStatus('Please enter a valid email address to receive your receipt.', 'error');
+                    showToast('Valid email required', 'error');
+                    return;
+                }
+
+                if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+                    showStatus(
+                        '⚠️ Email service not configured. Please set your Web3Forms access key in the code.',
+                        'error');
+                    showToast('Email service not configured', 'error');
+                    return;
+                }
+
+                const amt = currentAmount;
+
+                // Build a beautiful, professional email
+                const userMessage = `
+        Hi there! 👋
+
+        Thank you so much for supporting me with ₹${amt}.
+
+        I've received your payment confirmation. I will manually verify it in my bank app shortly and mark it complete.
+
+        This is an automated receipt for your records.
+
+        Transaction ID: ${generateTxnId()}
+        Date: ${new Date().toLocaleString()}
+
+        With gratitude,
+        Rishi
+        `;
+
+                isConfirming = true;
+                confirmBtn.disabled = true;
+                confirmBtn.classList.add('loading');
+                showStatus('⏳ Sending your receipt...', 'info');
+
+                fetch(WEB3FORMS_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            access_key: WEB3FORMS_ACCESS_KEY,
+                            subject: `✨ Thank you for your support ₹${amt}`,
+                            from_name: 'Rishi Support',
+                            from_email: 'support@rishi.com',
+                            to: email,
+                            bcc: ADMIN_EMAIL,
+                            message: userMessage,
+                            botcheck: ''
+                        })
+                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.success) {
+                            // Show success overlay with confetti
+                            showSuccessOverlay(email, amt);
+
+                            // Update status
+                            showStatus(
+                                `✅ Receipt sent to <strong>${email}</strong>! Thank you 🙏<br><span style="font-size:0.75rem; color:#888;">📬 Check your spam folder if you don't see it within 2 minutes.</span>`,
+                                'success');
+                            showToast(`Receipt sent to ${email}`, 'success');
+                            setTimelineStep(3);
+                            confirmBtn.disabled = true;
+                            confirmBtn.classList.remove('loading');
+                            isConfirming = false;
+                        } else {
+                            throw new Error(data.message || 'Email send failed');
+                        }
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        showStatus(`⚠️ Could not send email. Please try again or DM me on Instagram.`, 'error');
+                        showToast('Email send failed, please try again', 'error');
+                        confirmBtn.disabled = false;
+                        confirmBtn.classList.remove('loading');
+                        isConfirming = false;
+                    });
+            });
+
+            // ==========================================
+            // 15. FAQ TOGGLE
+            // ==========================================
+
+            document.querySelectorAll('.faq-q').forEach((q) => {
+                q.addEventListener('click', function() {
+                    const target = document.getElementById(this.dataset.target);
+                    if (!target) return;
+                    const isOpen = target.classList.contains('open');
+                    target.classList.toggle('open');
+                    this.classList.toggle('open');
+                    const icon = this.querySelector('.icon');
+                    if (icon) {
+                        icon.textContent = isOpen ? '+' : '−';
+                    }
+                });
+            });
+
+            // ==========================================
+            // 16. KEYBOARD SHORTCUT: ENTER to pay
+            // ==========================================
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const active = document.activeElement;
+                    if (active === customInput || active === userEmail) {
+                        payBtn.click();
+                    }
+                }
+            });
+
+            // ==========================================
+            // 17. INIT
+            // ==========================================
+
+            function init() {
+                upiDisplay.textContent = UPI_ID;
+
+                const defaultBtn = document.querySelector('.amount-btn.active');
+                if (defaultBtn) {
+                    updateAmount(Number(defaultBtn.dataset.val));
+                } else {
+                    updateAmount(20);
+                    document.querySelector('.amount-btn[data-val="20"]')?.classList.add('active');
+                }
+
+                setTimelineStep(1);
+
+                console.log('✅ Support page initialized.');
+                console.log('📧 Web3Forms key:', WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE' ? 'NOT SET' : 'SET');
+                console.log('👤 Admin email:', ADMIN_EMAIL);
+            }
+
+            init();
+
+            // Handle escape key to close overlay
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && successOverlay.classList.contains('show')) {
+                    hideSuccessOverlay();
+                }
+            });
+
+        })();
+    </script>
 
 </body>
 </html>
