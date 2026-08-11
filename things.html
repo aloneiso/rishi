@@ -47,31 +47,32 @@
         </section>
 
 
-        <!-- PROJECT GRID — same box style as your photos -->
+        <!-- PROJECT GRID – same box layout as your photos -->
         <section class="project-grid">
 
-            <!-- ViraScan -->
-            <a
-                href="https://vira-iota.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-card"
-                aria-label="Open ViraScan project"
-            >
-                <!-- simple icon inside the box (shield + scan) -->
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-icon">
-                    <rect x="20" y="15" width="60" height="75" rx="8" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M38 45 L48 55 L62 35" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="50" y1="60" x2="50" y2="75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="50" cy="60" r="18" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="8 4"/>
-                </svg>
-                <span>01</span>
-            </a>
+            <!-- ViraScan – Box with name, description, and link -->
+            <article class="project-card">
+                <span class="project-number">01</span>
+                <h2 class="project-name">ViraScan</h2>
+                <p class="project-bio">
+                    Checks entropy, printable strings, file structure, and known
+                    suspicious patterns — all without running the file. It gives you
+                    a risk score so you can decide if something feels off.
+                </p>
+                <a
+                    href="https://vira-iota.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    open tool →
+                </a>
+            </article>
 
             <!--
                 ADD MORE PROJECTS HERE
-                Just copy the <a class="project-card"> block, change the icon,
-                link and number (02, 03, ...)
+                Copy the <article class="project-card"> block and update
+                the number, name, bio, and link.
             -->
 
         </section>
@@ -80,11 +81,15 @@
 
 
     <!--
-        STYLE NOTE:
-        To make the project cards look exactly like your photo cards,
-        copy the CSS rules for .photo-card, .photo-card img, .photo-card span
-        and create new rules for .project-card, .project-icon, .project-card span.
-        The .project-grid should use the same grid as .photo-grid.
+        CSS NOTE:
+        To make these project cards look identical to your photo cards,
+        copy the styles from .photo-card, .photo-card img, .photo-card span
+        and apply them to .project-card, .project-card .project-name, etc.
+        For example:
+        .project-card { border: 1px solid var(--border); ... }
+        .project-card:hover { ... }
+        .project-number { position: absolute; bottom: 1rem; right: 1rem; font-size: 0.75rem; }
+        Add padding inside the card so text breathes.
     -->
 
 
