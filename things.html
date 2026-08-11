@@ -1,60 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>things — rishi</title>
-  <meta name="description" content="things rishi has made.">
+    <title>things — rishi</title>
+    <meta name="description" content="things rishi has made.">
 
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <header class="site-header">
+    <header class="site-header">
 
-    <a href="index.html" class="logo">rishi</a>
+        <a href="index.html" class="logo">rishi</a>
 
-    <nav class="nav">
-      <a href="about.html">about</a>
-      <a href="things.html" class="active">things</a>
-      <a href="photos.html">photos</a>
-      <a href="now.html">now</a>
-      <a href="support.html">support</a>
-    </nav>
+        <nav class="nav">
+            <a href="about.html">about</a>
+            <a href="things.html" class="active">things</a>
+            <a href="photos.html">photos</a>
+            <a href="now.html">now</a>
+            <a href="support.html">support</a>
+        </nav>
 
-  </header>
-
-
-  <main class="things-page">
-
-    <section class="nothing">
-
-      <div class="heading-meta">
-        <span class="eyebrow">02 / things</span>
-        <span class="heading-number">02</span>
-      </div>
-
-      <h1>NOTHING</h1>
-
-      <div class="nothing-note">
-
-        <span></span>
-
-        <p>
-          i did nothing till now
-        </p>
-
-      </div>
-
-    </section>
-
-  </main>
+    </header>
 
 
-  <script src="js/main.js"></script>
+    <main class="things-page">
+
+        <section class="projects">
+
+            <div class="heading-meta">
+                <span class="eyebrow">02 / things</span>
+                <span class="heading-number">02</span>
+            </div>
+
+            <h1>THINGS</h1>
+
+            <!-- ViraScan Project Card -->
+            <article class="project-card">
+
+                <div class="project-header">
+                    <h2 class="project-name">ViraScan</h2>
+                    <span class="project-status">live</span>
+                </div>
+
+                <p class="project-description">
+                    Checks entropy, printable strings, file structure, and known suspicious patterns — all without
+                    running the file. It gives you a risk score so you can decide if something feels off.
+                </p>
+
+                <div class="project-tags">
+                    <span class="tag">entropy analysis</span>
+                    <span class="tag">printable strings</span>
+                    <span class="tag">file structure</span>
+                    <span class="tag">suspicious patterns</span>
+                    <span class="tag">risk score</span>
+                    <span class="tag">sandbox-free</span>
+                    <span class="tag">4 mb max</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://vira-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+                        open tool
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 1H11M11 1V9M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="project-note">
+                    <span class="note-dot"></span>
+                    <p>Upload a file (under 4 MB) and get an instant risk assessment. No execution, no sandbox, just static analysis.</p>
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/main.js"></script>
 
 </body>
 </html>
