@@ -14,7 +14,6 @@
 <body>
 
     <header class="site-header">
-
         <a href="index.html" class="logo">rishi</a>
 
         <nav class="nav">
@@ -24,63 +23,69 @@
             <a href="now.html">now</a>
             <a href="support.html">support</a>
         </nav>
-
     </header>
 
 
-    <main class="things-page">
+    <main class="page">
 
-        <section class="projects">
-
+        <section class="page-heading">
             <div class="heading-meta">
                 <span class="eyebrow">02 / things</span>
                 <span class="heading-number">02</span>
             </div>
+            <h1>
+                things i've<br>
+                made.
+            </h1>
+        </section>
 
-            <h1>THINGS</h1>
 
-            <!-- ViraScan Project Card -->
-            <article class="project-card">
+        <section class="project-intro">
+            <p>
+                tools & experiments that help me learn.
+            </p>
+        </section>
 
-                <div class="project-header">
-                    <h2 class="project-name">ViraScan</h2>
-                    <span class="project-status">live</span>
-                </div>
 
-                <p class="project-description">
-                    Checks entropy, printable strings, file structure, and known suspicious patterns — all without
-                    running the file. It gives you a risk score so you can decide if something feels off.
-                </p>
+        <!-- PROJECT GRID — same box style as your photos -->
+        <section class="project-grid">
 
-                <div class="project-tags">
-                    <span class="tag">entropy analysis</span>
-                    <span class="tag">printable strings</span>
-                    <span class="tag">file structure</span>
-                    <span class="tag">suspicious patterns</span>
-                    <span class="tag">risk score</span>
-                    <span class="tag">sandbox-free</span>
-                    <span class="tag">4 mb max</span>
-                </div>
+            <!-- ViraScan -->
+            <a
+                href="https://vira-iota.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-card"
+                aria-label="Open ViraScan project"
+            >
+                <!-- simple icon inside the box (shield + scan) -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-icon">
+                    <rect x="20" y="15" width="60" height="75" rx="8" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M38 45 L48 55 L62 35" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="50" y1="60" x2="50" y2="75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="50" cy="60" r="18" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="8 4"/>
+                </svg>
+                <span>01</span>
+            </a>
 
-                <div class="project-links">
-                    <a href="https://vira-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                        open tool
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 1H11M11 1V9M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="project-note">
-                    <span class="note-dot"></span>
-                    <p>Upload a file (under 4 MB) and get an instant risk assessment. No execution, no sandbox, just static analysis.</p>
-                </div>
-
-            </article>
+            <!--
+                ADD MORE PROJECTS HERE
+                Just copy the <a class="project-card"> block, change the icon,
+                link and number (02, 03, ...)
+            -->
 
         </section>
 
     </main>
+
+
+    <!--
+        STYLE NOTE:
+        To make the project cards look exactly like your photo cards,
+        copy the CSS rules for .photo-card, .photo-card img, .photo-card span
+        and create new rules for .project-card, .project-icon, .project-card span.
+        The .project-grid should use the same grid as .photo-grid.
+    -->
 
 
     <script src="js/main.js"></script>
