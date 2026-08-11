@@ -9,6 +9,63 @@
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Additional styles for project cards (boxed look + colored link) -->
+    <style>
+        /* Boxed card – same feel as your photo cards but for text */
+        .project-card {
+            border: 1px solid var(--border, #333);
+            padding: 1.5rem;
+            position: relative;
+            background: var(--bg-card, transparent);
+            transition: border-color 0.2s ease;
+        }
+        .project-card:hover {
+            border-color: var(--accent, #888);
+        }
+
+        /* Project number in corner (like photo cards) */
+        .project-number {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted, #888);
+        }
+
+        .project-name {
+            font-size: 1.25rem;
+            margin: 0 0 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 1rem;
+            color: var(--text, #ddd);
+        }
+
+        /* Colored link – distinct from the rest of the text */
+        .project-link {
+            color: #4da6ff;       /* bright blue, change to any color you like */
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .project-link:hover {
+            border-bottom-color: #4da6ff;
+        }
+
+        /* Grid layout – adapt from your .photo-grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,7 +96,6 @@
             </h1>
         </section>
 
-
         <section class="project-intro">
             <p>
                 tools & experiments that help me learn.
@@ -47,10 +103,10 @@
         </section>
 
 
-        <!-- PROJECT GRID – same box layout as your photos -->
+        <!-- PROJECT BOXES – each is a separate card -->
         <section class="project-grid">
 
-            <!-- ViraScan – Box with name, description, and link -->
+            <!-- Project 01 – ViraScan -->
             <article class="project-card">
                 <span class="project-number">01</span>
                 <h2 class="project-name">ViraScan</h2>
@@ -71,26 +127,13 @@
 
             <!--
                 ADD MORE PROJECTS HERE
-                Copy the <article class="project-card"> block and update
-                the number, name, bio, and link.
+                Copy the <article class="project-card"> block and change
+                number, name, bio, and link.
             -->
 
         </section>
 
     </main>
-
-
-    <!--
-        CSS NOTE:
-        To make these project cards look identical to your photo cards,
-        copy the styles from .photo-card, .photo-card img, .photo-card span
-        and apply them to .project-card, .project-card .project-name, etc.
-        For example:
-        .project-card { border: 1px solid var(--border); ... }
-        .project-card:hover { ... }
-        .project-number { position: absolute; bottom: 1rem; right: 1rem; font-size: 0.75rem; }
-        Add padding inside the card so text breathes.
-    -->
 
 
     <script src="js/main.js"></script>
