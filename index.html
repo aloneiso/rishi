@@ -21,15 +21,15 @@
             width: 100%;
             height: 100%;
             z-index: 99999;
-            background: #ffffff; /* matches your site background */
+            background: #0a0a0a; /* black background */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
         }
 
         .preloader.fade-out {
@@ -43,14 +43,35 @@
             height: 100vh;
         }
 
+        /* subtle grid overlay */
+        .preloader::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* vignette */
+        .preloader::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+            pointer-events: none;
+        }
+
         /* ---------- SPEED TEST SCREEN ---------- */
         .speed-screen {
             position: relative;
             z-index: 2;
             width: 85%;
-            max-width: 520px;
+            max-width: 600px;
             text-align: center;
-            animation: fadeInUp 0.5s ease-out;
+            animation: fadeInUp 0.6s ease-out;
         }
 
         @keyframes fadeInUp {
@@ -68,14 +89,14 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 30px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #222;
         }
 
         .speed-label {
             font-size: 12px;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #999;
         }
@@ -87,21 +108,21 @@
         }
 
         .speed-main {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .speed-number {
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 6px;
-            margin-bottom: 4px;
+            gap: 8px;
+            margin-bottom: 6px;
         }
 
         .speed-value {
-            font-size: 56px;
+            font-size: 64px;
             font-weight: 300;
-            color: #111;
+            color: #ffffff;
             letter-spacing: -2px;
             line-height: 1;
             font-variant-numeric: tabular-nums;
@@ -109,39 +130,40 @@
         }
 
         .speed-unit {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 300;
-            color: #aaa;
-            letter-spacing: 0.5px;
+            color: #666;
+            letter-spacing: 1px;
         }
 
         .speed-phase {
             font-size: 11px;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: #bbb;
-            min-height: 16px;
+            color: #888;
+            min-height: 18px;
             margin-top: 8px;
+            transition: color 0.3s ease;
         }
 
         .speed-phase.complete {
-            color: #2d7d46;
+            color: #7ecf8b; /* soft green */
         }
 
         /* progress bar */
         .progress-track {
             width: 100%;
             height: 2px;
-            background: #f0f0f0;
+            background: #222;
             border-radius: 1px;
             overflow: hidden;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .progress-fill {
             height: 100%;
             width: 0%;
-            background: #111;
+            background: #ffffff; /* white fill */
             border-radius: 1px;
             transition: width 0.1s linear;
         }
@@ -153,7 +175,7 @@
             font-size: 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #ccc;
+            color: #555;
         }
 
         .skip-hint {
@@ -162,7 +184,7 @@
         }
 
         .skip-hint:hover {
-            color: #999;
+            color: #aaa;
         }
 
         /* ---------- REVEAL SCREEN ---------- */
@@ -177,7 +199,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            animation: fadeInReveal 0.6s ease-out;
+            animation: fadeInReveal 0.5s ease-out;
         }
 
         @keyframes fadeInReveal {
@@ -197,7 +219,7 @@
         @keyframes imageAppearSoft {
             0% {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.85);
             }
             100% {
                 opacity: 1;
@@ -210,7 +232,7 @@
             font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #aaa;
+            color: #888;
             animation: textFadeIn 0.8s ease-out 0.4s forwards;
             opacity: 0;
         }
@@ -221,10 +243,14 @@
 
         /* responsive */
         @media (max-width: 600px) {
-            .speed-value { font-size: 42px; }
-            .speed-unit { font-size: 14px; }
+            .speed-value { font-size: 46px; }
+            .speed-unit { font-size: 16px; }
             .reveal-image { max-width: 200px; max-height: 200px; }
             .speed-top { flex-direction: column; gap: 8px; align-items: flex-start; }
+        }
+
+        @media (max-width: 380px) {
+            .speed-value { font-size: 38px; }
         }
     </style>
 </head>
@@ -375,21 +401,22 @@
             const startTime = performance.now();
 
             // Timing constants (ms)
-            const SPEED_TEST_DURATION = 3500;   // how long the speed test runs
-            const REVEAL_SHOW_DURATION = 2000;   // how long the image stays
-            const FADE_OUT_DURATION = 600;       // fade-out transition time
+            const SPEED_TEST_DURATION = 7000;   // 7 seconds
+            const REVEAL_SHOW_DURATION = 2200;  // image display time
+            const FADE_OUT_DURATION = 700;
 
-            // Speed curve phases
+            // --- Generate a realistic "real" speed between 75 and 120 Mbps ---
+            const FINAL_SPEED = (75 + Math.random() * 45).toFixed(2); // e.g. 87.34
+
+            // Speed curve phases (fractions of total duration)
             const phases = [
-                { start: 0.00, end: 0.12, min: 0, max: 0, label: 'connecting...' },
-                { start: 0.12, end: 0.45, min: 10, max: 95, label: 'testing download speed...' },
-                { start: 0.45, end: 0.65, min: 65, max: 95, label: 'testing download speed...' },
-                { start: 0.65, end: 0.82, min: 25, max: 55, label: 'testing upload speed...' },
-                { start: 0.82, end: 0.95, min: 70, max: 92, label: 'finalizing...' },
-                { start: 0.95, end: 1.00, min: 87.42, max: 87.42, label: 'complete!' },
+                { start: 0.00, end: 0.10, min: 0, max: 0, label: 'connecting...' },
+                { start: 0.10, end: 0.35, min: 5, max: 0.85 * FINAL_SPEED, label: 'testing download speed...' },
+                { start: 0.35, end: 0.55, min: 0.7 * FINAL_SPEED, max: 0.95 * FINAL_SPEED, label: 'testing download speed...' },
+                { start: 0.55, end: 0.75, min: 0.3 * FINAL_SPEED, max: 0.6 * FINAL_SPEED, label: 'testing upload speed...' },
+                { start: 0.75, end: 0.92, min: 0.7 * FINAL_SPEED, max: 0.98 * FINAL_SPEED, label: 'finalizing...' },
+                { start: 0.92, end: 1.00, min: FINAL_SPEED, max: FINAL_SPEED, label: 'complete!' },
             ];
-
-            const FINAL_SPEED = 87.42;
 
             function getTargetSpeed(fraction) {
                 for (let i = 0; i < phases.length; i++) {
@@ -416,20 +443,16 @@
             function showRevealScreen() {
                 if (revealStarted) return;
                 revealStarted = true;
-
                 speedScreen.style.display = 'none';
                 revealScreen.style.display = 'flex';
-
                 setTimeout(fadeOutPreloader, REVEAL_SHOW_DURATION);
             }
 
             function fadeOutPreloader() {
                 if (fadeOutStarted) return;
                 fadeOutStarted = true;
-
                 preloader.classList.add('fade-out');
                 document.body.classList.remove('preloader-active');
-
                 setTimeout(() => {
                     if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
                 }, FADE_OUT_DURATION + 100);
@@ -442,26 +465,19 @@
                 fadeOutPreloader();
             }
 
-            // Click to skip
             preloader.addEventListener('click', function() {
                 if (revealStarted && !fadeOutStarted) {
                     fadeOutPreloader();
                     return;
                 }
-                if (!testCompleted) {
-                    skipPreloader();
-                }
+                if (!testCompleted) skipPreloader();
             });
 
-            // Keyboard skip
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    if (!testCompleted) {
-                        skipPreloader();
-                    } else if (revealStarted && !fadeOutStarted) {
-                        fadeOutPreloader();
-                    }
+                    if (!testCompleted) skipPreloader();
+                    else if (revealStarted && !fadeOutStarted) fadeOutPreloader();
                 }
             });
 
@@ -475,18 +491,16 @@
                 progressFill.style.width = (fraction * 100) + '%';
 
                 const targetSpeed = getTargetSpeed(fraction);
-                currentSpeed += (targetSpeed - currentSpeed) * 0.15;
-                if (Math.abs(targetSpeed - currentSpeed) < 0.01) {
-                    currentSpeed = targetSpeed;
-                }
+                currentSpeed += (targetSpeed - currentSpeed) * 0.12;
+                if (Math.abs(targetSpeed - currentSpeed) < 0.01) currentSpeed = targetSpeed;
 
-                const pingTarget = 8 + Math.sin(elapsed * 0.003) * 8 + Math.random() * 4;
+                const pingTarget = 8 + Math.sin(elapsed * 0.002) * 10 + Math.random() * 6;
                 currentPing += (pingTarget - currentPing) * 0.1;
                 pingValueEl.textContent = Math.round(currentPing) + ' ms';
 
-                if (fraction >= 0.95) {
-                    speedValueEl.textContent = FINAL_SPEED.toFixed(2);
-                } else if (fraction < 0.12) {
+                if (fraction >= 0.92) {
+                    speedValueEl.textContent = FINAL_SPEED;
+                } else if (fraction < 0.10) {
                     speedValueEl.textContent = '0.00';
                 } else {
                     speedValueEl.textContent = currentSpeed.toFixed(2);
@@ -494,7 +508,7 @@
 
                 const phaseLabel = getPhaseLabel(fraction);
                 speedPhaseEl.textContent = phaseLabel;
-                if (fraction >= 0.95) {
+                if (fraction >= 0.92) {
                     speedPhaseEl.classList.add('complete');
                 } else {
                     speedPhaseEl.classList.remove('complete');
@@ -506,29 +520,24 @@
                     return;
                 }
 
-                if (!testCompleted) {
-                    requestAnimationFrame(animateSpeedTest);
-                }
+                if (!testCompleted) requestAnimationFrame(animateSpeedTest);
             }
 
             requestAnimationFrame(animateSpeedTest);
 
-            // Skip hint hover effect
             const skipHint = document.getElementById('skipHint');
-            skipHint.addEventListener('mouseenter', () => { skipHint.textContent = 'skip →'; });
-            skipHint.addEventListener('mouseleave', () => { skipHint.textContent = 'click anywhere to skip →'; });
+            skipHint.addEventListener('mouseenter', () => skipHint.textContent = 'skip →');
+            skipHint.addEventListener('mouseleave', () => skipHint.textContent = 'click anywhere to skip →');
 
-            // Image error fallback (still fade out)
             const revealImage = document.getElementById('revealImage');
             revealImage.addEventListener('error', () => {
-                console.warn('image1.png not found in root directory');
+                console.warn('image1.png not found');
                 setTimeout(fadeOutPreloader, 1500);
             });
 
-            // Safety fallback
             setTimeout(() => {
                 if (!fadeOutStarted) fadeOutPreloader();
-            }, 10000);
+            }, 12000);
         })();
     </script>
 </body>
